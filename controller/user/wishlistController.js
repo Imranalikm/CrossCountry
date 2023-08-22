@@ -6,11 +6,12 @@ const loadWishlist = async (req, res) => {
     const id = req.session.user_id;
 
     const user = await userModel.findOne({ _id: id })
+    const cart = await cartModel.findOne({ userId: id });  
     const products = await productModel.find({
         _id: { $in: user.wishlist },
     }).lean()
 
-    res.render('user/wishlist', { user, products,id });
+    res.render('user/wishlist', { user, products,id,cart });
 };
 
 

@@ -209,12 +209,14 @@
     function addToClick(productId, productName) {
   axios.get(`/addToCart?productId=${productId}`)
     .then((result) => {
-      console.log(result);
+      
       if (result.data.response) {
         let x = document.getElementById("snackbar");
         x.textContent = `${productName} ADDED TO CART`; // Set the content dynamically
         x.className = "show";
-        setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+        setTimeout(function () { x.className = x.className.replace("show", "");location.reload();  }, 2000);
+        
+        
       } else {
         let x = document.getElementById("snackbar-error");
         x.textContent = `${productName} is OUT OF STOCK`; // Set the content dynamically

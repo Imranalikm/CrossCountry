@@ -1,7 +1,7 @@
 const  categoryModel = require('../../models/categoryModel');
 const productModel = require('../../models/productModel');
 const userModel = require('../../models/userModel');
-
+const cartModel = require ('../../models/cartModel');
 
 // const loadShop = async (req, res)=>{
 //     const id = req.session.user_id;
@@ -21,6 +21,7 @@ const getProductList = async (req, res, next) => {
     try {
         const id = req.session.user_id;
         const user = await userModel.findOne({ _id: id });
+        const cart = await cartModel.findOne({ userId: id });
 
         const page = +req.query.page || 1;
         const searchQuery = req.query.search || '';
@@ -77,7 +78,8 @@ const getProductList = async (req, res, next) => {
             searchQuery,
             categoryId,
             sortOption,
-            productCount
+            productCount,
+            cart
         });
     } catch (err) {
         console.error(err);

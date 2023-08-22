@@ -230,7 +230,7 @@
                         <ul>
                             
                             <li><a href="/wishlist"><i class="fa fa-heart"></i> <span><%=user.wishlist.length%></span></a></li>
-                            <li id="cart"><a href="/cart"><i class="fa fa-shopping-bag"></i> <span> </span></a></li> 
+                            <li id="cart"><a href="/cart"><i class="fa fa-shopping-bag"></i> <span><% if(cart){ %><%= cart.items.length %><% }else{ %>0<% } %> </span></a></li> 
                         </ul>
 
                         <!-- <div class="header__top__right__auth">

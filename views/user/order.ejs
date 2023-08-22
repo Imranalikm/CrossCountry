@@ -11,6 +11,9 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
     <link href="/images/favicon-32x32.png" rel="icon">
     <!-- Css Styles -->
     <link rel="stylesheet" href="/home/css/bootstrap.min.css" type="text/css">
@@ -219,8 +222,8 @@
 
                         <ul>
                             
-                            <li><a href="/wishlist"><i class="fa fa-heart"></i> <span></span></a></li>
-                            <li id="cart"><a href="/cart"><i class="fa fa-shopping-bag"></i> <span> </span></a></li> 
+                            <li><a href="/wishlist"><i class="fa fa-heart"></i> <span><%=user.wishlist.length%></span></a></li>
+                            <li id="cart"><a href="/cart"><i class="fa fa-shopping-bag"></i> <span><% if(cart){ %><%= cart.items.length %><% }else{ %>0<% } %>  </span></a></li> 
                         </ul>
 
                         <!-- <div class="header__top__right__auth">

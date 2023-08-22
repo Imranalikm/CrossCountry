@@ -12,7 +12,7 @@ const loadorder = async (req, res)=>{
     const userId = req.session.user_id;
     const userData = await userModel.findOne({_id: userId});
     const orders = await orderModel.find({user: userId}).sort({order_date: -1});
-
+    
     // let products = [];
     // if(orders){
 

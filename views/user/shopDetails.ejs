@@ -227,7 +227,7 @@
                 if(result.data.response){
                     let x = document.getElementById("snackbar");
                     x.className = "show";
-                    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);       
+                    setTimeout(function(){ x.className = x.className.replace("show", "");location.reload(); }, 3000);       
                 }else{
                     let x = document.getElementById("snackbar-error");
                     x.className = "show";

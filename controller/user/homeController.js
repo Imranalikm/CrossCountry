@@ -1,4 +1,4 @@
-const cartModel = require('../../models/cartModel');
+const cartModel = require ('../../models/cartModel');
 const categoryModel = require('../../models/categoryModel');
 const productModel = require('../../models/productModel');
 const userModel = require('../../models/userModel');
@@ -12,7 +12,7 @@ const loadHome = async (req, res)=>{
         const id = req.session.user_id;
         
         const user = await userModel.findOne({_id: id});
-        const cart = await cartModel.find();
+        const cart = await cartModel.findOne({ userId: id });   
         const products = await productModel.find().limit(4).sort({_id:-1});
         const banners = await bannerModel.find();
         

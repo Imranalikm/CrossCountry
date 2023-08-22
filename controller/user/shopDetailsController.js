@@ -1,7 +1,7 @@
 const categoryModel = require('../../models/categoryModel');
 const productModel = require('../../models/productModel');
 const userModel = require('../../models/userModel');
-
+const cartModel = require('../../models/cartModel');
 
 
 const loadShopDetails = async (req, res)=>{
@@ -17,13 +17,14 @@ const loadShopDetails = async (req, res)=>{
 
         const products = await productModel.find();
         const categories = await categoryModel.find();
+        const cart = await cartModel.findOne({ userId: id });
 
         await productModel.findOne({_id: Proid})
         .then((product)=>{
             if(!product){
                 res.send("");
             }
-            res.render('user/shopDetails',{categories, product, products, Proid, user,id});
+            res.render('user/shopDetails',{categories, product, products, Proid, user,id,cart});
         })
         .catch(err =>{
             res.send("");
