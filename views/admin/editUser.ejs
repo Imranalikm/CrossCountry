@@ -1,0 +1,50 @@
+<%- include('./partials/adminheader.ejs') %>
+
+ 
+       
+        <%- include('./partials/sidebar.ejs') %>
+
+        
+        <section class="gradient-custom container vh-100">
+            <div class="container py-5 h-100 row justify-content-center align-items-center">
+                <div class="col-6">
+                    <div class="card shadow-2-strong card-registration">
+                        <div class="card-body shadow" style="background-color: #EBEBEB;border-radius: 5px;">
+
+                            <form action="" method="post" id="form"
+                                class="d-flex flex-column align-items-center mt-3">
+
+                                <div class="d-flex align-items-center gap-3 mb-3">
+
+                                    <label class="fw-bold fs-5">Access: </label>
+                                    <select name="access" class="form-select" style="box-shadow: none;">
+                                        <option value="true" <% if(user.isAccess){ %> selected <% } %> >Unblock</option>
+                                        <option value="false" <% if(!user.isAccess){ %> selected <% } %> >Block</option>
+                                    </select>
+
+                                </div>
+
+
+                                <div>
+                                    <button type="submit" style="background-color: #ff0505;color: #fff;width: 100px;"
+                                    class="btn btn-sm fw-normal p-10 mb-3 mt-3">Update</button>
+                                </div>
+
+
+                            </form>
+                        </div>
+                    </div>
+                
+            </div>
+        </section>
+
+          
+
+            
+
+       
+    </div>
+
+    
+    
+        <%- include('./partials/adminfooter.ejs') %>

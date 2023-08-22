@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CrossCountry</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="/home/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/style.css" type="text/css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/smoothness/jquery-ui.css">
+   
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        #snackbar, #snackbar-error{
+          visibility: hidden;
+          min-width: 250px;
+          margin-left: -125px;
+          background-color: #ffff02;
+          color: #000000;
+          text-align: center;
+          border-radius: 2px;
+          padding: 10px;
+          position: fixed;
+          z-index: 1;
+          left: 50%;
+          bottom: 100px;
+          font-size: 17px;
+          border-radius: 15px;
+        }
+        
+        #snackbar.show, #snackbar-error.show {
+          visibility: visible;
+          -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+          animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+        
+        @-webkit-keyframes fadein {
+          from {bottom: 0; opacity: 0;} 
+          to {bottom: 30px; opacity: 1;}
+        }
+        
+        @keyframes fadein {
+          from {bottom: 0; opacity: 0;}
+          to {bottom: 30px; opacity: 1;}
+        }
+        
+        @-webkit-keyframes fadeout {
+          from {bottom: 30px; opacity: 1;} 
+          to {bottom: 0; opacity: 0;}
+        }
+        
+        @keyframes fadeout {
+          from {bottom: 30px; opacity: 1;}
+          to {bottom: 0; opacity: 0;}
+        }
+
+
+
+
+
+        .address .active {
+          border-color: #f60404 !important;
+          background-color: #f2f2f2;
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18), 0 3px 6px rgba(0, 0, 0, 0.23);
+        }
+
+        .card {
+          cursor: pointer;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15), 0 2px 5px rgba(0, 0, 0, 0.2);
+          -webkit-transition: all 0.5s ease;
+          -moz-transition: all 0.5s ease;
+          -o-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+        }
+
+    </style>
+    
+</head>
+ <!-- Page Preloder -->
+ <!-- <div id="preloder">
+    <div class="loader"></div>
+</div> -->
+
+
+
+<!-- Humberger Begin -->
+<div class="humberger__menu__overlay"></div>
+<div class="humberger__menu__wrapper">
+    <div class="humberger__menu__logo">
+        <a href="#"><img class="ml-5" src="/home/img/logo.png" alt="" style="margin-left: 2rem;" ></a>
+    </div>
+    <div class="humberger__menu__cart">
+        <ul>
+            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+        </ul>
+        <div class="header__top__right__auth">
+            <a class="navbar-brand text-dark fs-4 fw-bold" href="#"><span class="text-danger"></span></a>
+        </div>
+        
+    </div>
+    
+    <nav class="humberger__menu__nav mobile-menu">
+        <ul>
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <div id="mobile-menu-wrap"></div>
+
+</div>
+<!-- Humberger End -->
+
+<!-- Header Section Begin -->
+ <header class="header sticky-nav">
+
+    <div class="container-fluid" style="background-color: #fdfdfd;" >
+        <div class="row">
+            <div class="col-lg-3 d-flex align-items-center">
+                <div class="header__logo  d-flex align-items-center" style="margin-left: 2rem;">
+                    
+                    <a class="navbar-brand text-dark fs-4 fw-bold" href="#"><img src="/home/img/logogo.png" alt=""></a>
+                    <!-- <div class="" style="font-weight: bold;font-size: large;font-family: sans-serif;">
+                        CROSS<span style="color: red;">COUNTRY</span>
+                    </div> -->
+                </div>
+                
+            </div>
+            <div class="col-lg-7 d-flex justify-content-between align-items-center">
+                <nav class="header__menu ml-3">
+                    <ul>
+                        <li class=""><a href="/">Home</a></li>
+                        <li><a href="/shop">Shop</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        
+                        <% if (user && user.username) { %>
+                        <li class="">
+                            <div>
+                            <a href="#" style="text-decoration: none">
+                                 <%= user.username %>
+                                 <i class="fa fa-user"> </i> 
+                             </a>
+                        </div>
+                            <ul class="header__menu__dropdown">
+                                <li><a href="/profile" style="text-decoration: none;font-weight: bold;color: #000000;"><i class="fa fa-user" style="font-weight: bold ;color: #000000 ;"></i><%= user.username %>'s Profile</a>
+                                </li>
+                                <li><a href="/order" style="text-decoration: none;font-weight: bold;color: #000000;"><i class="fa-solid fa-list-radio" style="font-weight: bold;color: #000000;"></i>Orders</a>
+                                </li>
+                                <li><a href="/wallet" style="text-decoration: none;font-weight: bold;color: #000000;"><i class="fa-solid fa-wallet" style="font-weight: bold;color: #000000;"></i>Wallet</a>
+                                </li>
+                                <li><a href="/logout" style="text-decoration: none;font-weight: bold;color: #000000;"><i class="fa fa-sign-out"></i>Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <% } %>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-2 d-flex justify-content-between align-items-center">
+                <div class="header__cart">
+                   
+
+                    <div class="header__top__right__auth">
+
+                        <% if(!id) {%>
+                        
+                        
+
+                        <div class="header__top__right__auth">
+                            <a onclick="login()"><i class="fa fa-user"></i> Login</a>
+                        </div>
+
+                        <% } else {%>
+                        
+
+                        <ul>
+                            
+                            <li><a href="/wishlist"><i class="fa fa-heart"></i> <span><%=user.wishlist.length%></span></a></li>
+                            <li id="cart"><a href="/cart"><i class="fa fa-shopping-bag"></i> <span></span></a></li> 
+                        </ul>
+
+                        <!-- <div class="header__top__right__auth">
+                            <a href="/profile"><i class="fa fa-user" style="width: 2rem;height: 2rem;"></i><%= user.username %></a>
+                        </div> -->
+
+                        <!-- <div class="header__top__right__auth">
+                            <a href="/logout" style="box-shadow: none;border: none;" class="btn btn-sm btn-outline-danger">Logout</a>
+                        </div> -->
+                        
+                        <% } %>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        </div>
+        <div class="humberger__open">
+            <i class="fa fa-bars"></i>
+        </div>
+    </div>
+</header>
+
+<body>

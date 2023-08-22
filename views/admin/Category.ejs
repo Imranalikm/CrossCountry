@@ -1,0 +1,48 @@
+<%- include('./partials/adminheader.ejs') %>
+
+    
+        
+        <%- include('./partials/sidebar.ejs') %>
+
+        
+        <div style="overflow-y: auto;" class="w-100 d-flex align-items-center align-items-center">
+            <div class="table">
+                <table class="table table-success table-striped table-responsive" >
+                <thead>
+                    
+                    <tr>
+                        <th>Si.No</th>
+                        <th>Category Name</th>
+                        <th>Image</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    
+                </thead>
+                
+                <tbody>
+                    
+                    <% categories.forEach((category,i)=>{ %>
+                        <tr>
+                            <td><%= i+1 %></td>
+                            <td><%= category.categoryName %></td>
+                            <td><img src="<%= category.image[0].url %>" alt="Category Image" style="width: 1.5rem;height: 1.5rem;"></td>
+                            <td><a href="/admin/category/edit?id=<%= category._id %>">  <button type="button" class="btn btn-success">Edit</button></a></td>
+                            <td><button onclick="redirectToPage()" <% if(productsValue[i]) { %> disabled <% } %> type="button" class="btn btn-danger"> <% if(productsValue[i]) { %> Can Not Delete <% } else { %>Delete <% } %> </button></td>
+                        </tr>
+                        <script>
+                            function redirectToPage(){
+                                window.location.href = "/admin/category/Delete?id=<%= category._id %>"
+                            }
+                            </script>
+                        <% }) %>
+                        
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+            
+        </div>
+        
+        <%- include('./partials/adminfooter.ejs') %>

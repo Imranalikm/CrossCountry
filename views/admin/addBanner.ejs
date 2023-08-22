@@ -1,0 +1,161 @@
+<%- include('./partials/adminheader.ejs') %>
+
+    
+        
+        <%- include('./partials/sidebar.ejs') %>
+
+        <section class="gradient-custom container vh-100">
+            <div class="container py-5 h-100 row justify-content-center align-items-center">
+                    <div class="col-12 col-lg-9 col-xl-8">
+                        <div class="card shadow-2-strong card-registration">
+                            <div class="card-body shadow" style="border-radius: 5px;">
+                                
+
+                                <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Banner</title>
+</head>
+<style>
+body {
+    font-family: Arial, sans-serif;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="color"],
+select,
+input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    form {
+        padding: 10px;
+    }
+}
+</style>
+<body>
+    <h2>Create Banner</h2>
+    <form action="/admin/banner/add" method="POST" enctype="multipart/form-data">
+        <label for="caption1Text">Caption 1 Text:</label>
+        <input type="text" id="caption1Text" name="caption1Text" required>
+        <br>
+        <label for="caption1Color">Caption 1 Color:</label>
+        <input type="color" id="caption1Color" name="caption1Color" required>
+        <br>
+        <label for="caption2Text">Caption 2 Text:</label>
+        <input type="text" id="caption2Text" name="caption2Text" required>
+        <br>
+        <label for="caption2Color">Caption 2 Color:</label>
+        <input type="color" id="caption2Color" name="caption2Color" required>
+        <br>
+        <label for="bannerImage">Banner Image:</label>
+        <input type="file" id="bannerImage" name="Image" accept="image/*" required>
+        <br>
+        <label for="category">Category:</label>
+        <select id="category" name="category" required>
+            <option value="" disabled selected>Select Category</option>
+            <% categories.forEach((category)=>{ %>
+                <option value="<%= category._id %>"><%= category.categoryName %></option>
+                <% }) %>
+        </select>
+        <br>
+        <button type="submit">Create Banner</button>
+    </form>
+</body>
+</html>
+
+                                <!-- <form action="/admin/banner/add" method="post" class="d-flex flex-column align-items-center mt-2" id="form" enctype="multipart/form-data">
+                                    
+                                    <div class="mb-3">
+                                        <div class="fw-bold text-center fs-6 text-uppercase mb-1">Banner Information</div>
+                                    </div>
+    
+                                    <div class="col-md-6">
+    
+                                        <div class="form-outline mb-1">
+                                            <label class="form-label" style="font-size: .75rem;" for="title">Title</label>
+                                            <input type="text" id="title" name="title" style="box-shadow: none;" class="form-control form-control-sm" required/>
+                                        </div>
+                                        
+                                        
+                                        <div class="col-6 mb-1">
+                                            <label class="form-label" style="font-size: .75rem;" for="category">Category</label>
+                                            <select class="form-select form-select-sm input-sm shadow-none" name="targetCategory">
+                                                
+                                                <% categories.forEach((category)=>{ %>
+                                                <option value="<%= category._id %>"><%= category.categoryName %></option>
+                                                <% }) %>
+
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="form-outline mb-1">
+                                            <label class="form-label" style="font-size: .75rem;" for="description">Description</label>
+                                            <textarea class="form-control form-control-sm" maxlength="20" placeholder="20 characters only..." id="description" name="description" style="box-shadow: none;" rows="2" required></textarea>
+                                        </div>
+                                        
+                                        <div class="form-outline mb-1">
+                                            <label class="form-label" style="font-size: .75rem;" for="image">Image</label>
+                                            <input class="form-control form-control-sm" name="image" style="box-shadow: none;" type="file" id="formFileMultiple" required>
+                                        </div>
+                      
+                                      </div>
+    
+                                      <div id="error-field" class="text-danger fs-6"></div>
+    
+                                    <button type="submit" style="background-color: #7FAD39;color: #fff;width: 150px;" class="btn btn-sm fw-normal p-10 mb-3 mt-3">Create Product</button>    
+
+                                </form> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+           
+
+
+
+
+
+
+
+
+        <%- include('./partials/adminfooter.ejs') %>

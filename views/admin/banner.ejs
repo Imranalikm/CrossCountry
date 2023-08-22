@@ -1,0 +1,95 @@
+<%- include('./partials/adminheader.ejs') %>
+
+    <style>
+        /* CSS for table customization */
+.table-custom {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14px;
+}
+
+.table-custom th,
+.table-custom td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #dddddd;
+}
+
+.table-custom th {
+    background-color: #f2f2f2;
+}
+
+.table-custom tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table-custom th:first-child,
+.table-custom td:first-child {
+    padding-left: 20px;
+}
+
+.table-custom th:last-child,
+.table-custom td:last-child {
+    padding-right: 20px;
+}
+
+.table-custom .actions {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .table-custom th,
+    .table-custom td {
+        padding: 8px;
+    }
+}
+
+    </style>
+        
+        <%- include('./partials/sidebar.ejs') %>
+
+
+        <div style="overflow-y: auto;" class="w-100 d-flex align-items-center align-items-center">
+
+            <div class="table" >
+                <table class="table table-custom table-light table-striped table-responsive" >
+                <thead>
+                    
+                    <tr>
+                        <th>Si.No</th>
+                        <th>Banner</th>
+                        <th>Category</th>
+                       
+                        <!-- <th >Edit</th>
+                        <th>Delete</th> -->
+                    </tr>
+                    
+                </thead>
+                
+                <tbody>
+                    
+                    <% banners.forEach((banner, i)=>{ %>
+                    
+                        <tr>
+                            <td><%= i+1 %></td>
+                            <td><img style="width: 1.5rem;height: 1.5rem;" src="<%= banner.bannerImage.url %>" alt=""></td>
+                            <td><%= banner.category.categoryName %></td>
+                            
+                            <!-- <td><a href="/admin/banner/edit?bannerId=<%= banner._id %>"> <button type="tbutton" class="btn btn-success">Edit</button></a></td>
+                            <td><a href="#">  <button type="button" class="btn btn-danger">Delete</button></a></td> -->
+                            
+                        </tr>
+                            
+                    <% }) %>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div >
+
+
+
+        <%- include('./partials/adminfooter.ejs') %>

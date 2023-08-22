@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CrossCountry</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="/home/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/style.css" type="text/css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="/home/css/easyzoom.css"  type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        #snackbar, #snackbar-error{
+          visibility: hidden;
+          min-width: 250px;
+          margin-left: -125px;
+          background-color: #ffff02;
+          color: #000000;
+          text-align: center;
+          border-radius: 2px;
+          padding: 10px;
+          position: fixed;
+          z-index: 1;
+          left: 50%;
+          bottom: 100px;
+          font-size: 17px;
+          border-radius: 15px;
+        }
+        
+        #snackbar.show, #snackbar-error.show {
+          visibility: visible;
+          -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+          animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+        
+        @-webkit-keyframes fadein {
+          from {bottom: 0; opacity: 0;} 
+          to {bottom: 30px; opacity: 1;}
+        }
+        
+        @keyframes fadein {
+          from {bottom: 0; opacity: 0;}
+          to {bottom: 30px; opacity: 1;}
+        }
+        
+        @-webkit-keyframes fadeout {
+          from {bottom: 30px; opacity: 1;} 
+          to {bottom: 0; opacity: 0;}
+        }
+        
+        @keyframes fadeout {
+          from {bottom: 30px; opacity: 1;}
+          to {bottom: 0; opacity: 0;}
+        }
+
+
+
+
+
+        .address .active {
+          border-color: #f60404 !important;
+          background-color: #f2f2f2;
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18), 0 3px 6px rgba(0, 0, 0, 0.23);
+        }
+
+        .card {
+          cursor: pointer;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15), 0 2px 5px rgba(0, 0, 0, 0.2);
+          -webkit-transition: all 0.5s ease;
+          -moz-transition: all 0.5s ease;
+          -o-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+        }
+
+    </style>
+    
+</head>
+ <!-- Page Preloder -->
+ <!-- <div id="preloder">
+    <div class="loader"></div>
+</div> -->
+
+
+
+<!-- Humberger Begin -->
+<div class="humberger__menu__overlay"></div>
+<div class="humberger__menu__wrapper">
+    <div class="humberger__menu__logo">
+        <a href="#"><img class="ml-5" src="/home/img/logo.png" alt="" style="margin-left: 2rem;" ></a>
+    </div>
+    <div class="humberger__menu__cart">
+        <ul>
+            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+        </ul>
+        <div class="header__top__right__auth">
+            <a class="navbar-brand text-dark fs-4 fw-bold" href="#"><span class="text-danger"></span></a>
+        </div>
+        
+    </div>
+    
+    <nav class="humberger__menu__nav mobile-menu">
+        <ul>
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <div id="mobile-menu-wrap"></div>
+
+</div>
+<!-- Humberger End -->
+
+<!-- Header Section Begin -->
+ <header class="header sticky-nav">
+
+    <div class="container-fluid" style="background-color: #fdfdfd;" >
+        <div class="row">
+            <div class="col-lg-3 d-flex align-items-center">
+                <div class="header__logo  d-flex align-items-center" style="margin-left: 2rem;">
+                    
+                    <a class="navbar-brand text-dark fs-4 fw-bold" href="#"><img src="/home/img/logogo.png" alt=""></a>
+                    <!-- <div class="" style="font-weight: bold;font-size: large;font-family: sans-serif;">
+                        CROSS<span style="color: red;">COUNTRY</span>
+                    </div> -->
+                </div>
+                
+            </div>
+            <div class="col-lg-7 d-flex justify-content-between align-items-center">
+                <nav class="header__menu ml-3">
+                    <ul>
+                        <li class=""><a href="/">Home</a></li>
+                        <li><a href="/shop">Shop</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        
+                        
+                    
+                    </ul>
+                </nav>
+            </div>
+           
+
+                </div>
+            </div>
+        </div>
+
+        </div>
+        <div class="humberger__open">
+            <i class="fa fa-bars"></i>
+        </div>
+    </div>
+</header>
+
+<body>
+<style>
+    .wrap-error {
+  background-color: #667bf2;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%23f0b608' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%23e6d710' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%23e7af05' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%23e7d808' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%23d8a408' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%23f1e213' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%23f0b607' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%23e4d506' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%23eab822' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%23e8da14' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%23e8b008' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%23edde14' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
+  height: calc(var(--vh, 1vh) * 100);
+}
+.wrap-error h1 {
+  font-size: 6.875rem;
+  letter-spacing: -13px;
+  line-height: 1;
+  font-family: montserrat, sans-serif;
+}
+h1 span {
+  text-shadow: -8px 0 0 rgb(102 123 242);
+}
+.text-9xl {
+  font-size: 5.5rem;
+}
+
+</style>
+<div class="wrap-error">
+    <div class="d-flex align-items-center h-100">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 text-center text-white">
+            <h1 class=""><span>4</span><span>0</span><span>4</span></h1>
+            <h5 class="">Oops! Page not found</h5>
+            <p class="mb-4">we are sorry, but the page you requested was not found</p>
+            <a href="/" class="btn btn-dark">Go Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <%- include('./partials/footer.ejs') %>

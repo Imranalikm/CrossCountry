@@ -1,0 +1,49 @@
+<%- include('./partials/adminheader.ejs') %>
+
+
+<%- include('./partials/sidebar.ejs') %>
+
+<section class="gradient-custom container vh-100">
+    <div class="container py-5 h-100 row justify-content-center align-items-center">
+            <div class="col-12 col-lg-9 col-xl-8">
+                <div class="card shadow-2-strong card-registration">
+                    <div class="card-body shadow" style="background-color: #def1f3;border-radius: 5px;">
+                        
+                        <form action="/admin/category/add"  method="post" id="form" class="d-flex flex-column align-items-center mt-3" enctype="multipart/form-data">
+                            
+                            <div class="mb-5">
+                                <div class="fw-bold text-center fs-5 text-uppercase mb-1">Enter your Category</div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="categoryName">Category Name</label>
+                                  <input type="text" id="categoryName" name="categoryName" style="box-shadow: none;" class="form-control" required/>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="categoryImage"> Add Image</label>
+                                  <input type="file" id="categoryImage" name="image" style="box-shadow: none;" class="form-control" required/>
+                                </div>
+
+
+                            </div>
+
+                            <div class="text-center text-danger"><%= message %></div>
+
+                            <button type="submit" style="background-color: #f54033;color: #fff;width: 200px;" class="btn fw-normal p-10 mb-3 mt-3">Add</button> 
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+    
+
+
+
+
+
+
+<%- include('./partials/adminfooter.ejs') %>

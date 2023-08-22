@@ -1,0 +1,223 @@
+
+
+
+<%- include('./partials/header.ejs') %>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+    /* CSS for table customization */
+.table-custom {
+border-collapse: collapse;
+width: 100%;
+font-size: 14px;
+}
+
+.table-custom th,
+.table-custom td {
+padding: 12px;
+text-align: left;
+border-bottom: 1px solid #dddddd;
+}
+
+.table-custom th {
+background-color: #f2f2f2;
+}
+
+.table-custom tr:nth-child(even) {
+background-color: #f2f2f2;
+}
+
+.table-custom th:first-child,
+.table-custom td:first-child {
+padding-left: 20px;
+}
+
+.table-custom th:last-child,
+.table-custom td:last-child {
+padding-right: 20px;
+}
+
+.table-custom .actions {
+display: flex;
+justify-content: space-around;
+align-items: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+.table-custom th,
+.table-custom td {
+    padding: 8px;
+}
+}
+
+</style>
+
+<style>
+    .card {
+    background-color: #fff;
+    border-radius: 10px;
+    border: none;
+    position: relative;
+    margin-bottom: 30px;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,0.1), 0 0.9375rem 1.40625rem rgba(90,97,105,0.1), 0 0.25rem 0.53125rem rgba(90,97,105,0.12), 0 0.125rem 0.1875rem rgba(90,97,105,0.1);
+}
+.l-bg-cherry {
+    background: linear-gradient(to right, #ff0000,#ffda0b) !important;
+    color: #fff;
+}
+
+/* .l-bg-blue-dark {
+    background: linear-gradient(to right, #373b44, #4286f4) !important;
+    color: #fff;
+}
+
+.l-bg-green-dark {
+    background: linear-gradient(to right, #0a504a, #38ef7d) !important;
+    color: #fff;
+}
+
+.l-bg-orange-dark {
+    background: linear-gradient(to right, #a86008, #ffba56) !important;
+    color: #fff;
+} */
+
+.card .card-statistic-3 .card-icon-large .fas, .card .card-statistic-3 .card-icon-large .far, .card .card-statistic-3 .card-icon-large .fab, .card .card-statistic-3 .card-icon-large .fal {
+    font-size: 110px;
+}
+
+.card .card-statistic-3 .card-icon {
+    text-align: center;
+    line-height: 50px;
+    margin-left: 15px;
+    color: #000;
+    position: absolute;
+    right: -5px;
+    top: 20px;
+    opacity: 0.1;
+}
+
+/* .l-bg-cyan {
+    background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
+    color: #fff;
+}
+
+.l-bg-green {
+    background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%) !important;
+    color: #fff;
+}
+
+.l-bg-orange {
+    background: linear-gradient(to right, #f9900e, #ffba56) !important;
+    color: #fff;
+}
+
+.l-bg-cyan {
+    background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
+    color: #fff;
+} */
+</style>
+<style>
+  
+
+    .nav-link-box {
+  border: 1px solid rgb(174, 171, 171);
+  min-height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link-box:hover {
+  background-color: #ffe600; /* Change to the desired hover color */
+}
+
+.nav-link {
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+}
+
+.nav-link:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+</style>
+
+<div class="container d-flex justify-content-center align-items-center" style="padding-top: 6rem;">
+    <div class="col-md-12 col-lg-12 mt-4">
+        <div class="row my-4">
+            <div class="col-md-12">
+                <div class="card l-bg-cherry">
+                    <!-- Display Balance -->
+                    <div class="card-statistic-3 p-4">
+                        <div class="card-icon card-icon-large"><i class="fas fa-solid fa-indian-rupee-sign"></i>"></i></div>
+                        <div class="mb-4">
+                            <h5 class="card-title mb-0 text-light fw-bold"><i class="fa-solid fa-wallet" style="color: #ffffff;"></i>  Wallet Balance</h5>
+                        </div>
+                        <div class="row align-items-center mb-2 d-flex">
+                            <div class="col-8">
+                                <h2 class="d-flex align-items-center mb-0 text-light" style="font-weight: bolder;color: #ffffff;">
+                                    Rs.<%= wallet ? wallet.balance : '0' %>
+                                </h2>
+                            </div>
+                            <div class="col-4 text-right">
+                                <span>
+                                    <a href="#" style="color: rgb(0, 0, 0);text-decoration: none;font-weight: bold;" data-toggle="collapse" data-target="#transactionHistory">View Transactions</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Transaction History -->
+                    <div id="transactionHistory" class="collapse">
+                        <% if (wallet && wallet.history.length > 0) { %>
+                        <table class="table table-hover table-custom table-light table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Amount</th>
+                                    <th>Updated Balance</th>
+                                    <th>Updated Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% wallet.history.reverse().forEach((historyItem) => { %>
+                                <tr>
+                                    <td>
+                                        <% if (historyItem.type === "add") { %>
+                                        CREDIT
+                                        <% } else { %>
+                                        DEBIT
+                                        <% } %>
+                                    </td>
+                                    <td>
+                                        <% if (historyItem.type === "add") { %>
+                                        <i class="fa-solid fa-circle-plus" style="color: #27ff0a;"></i>
+                                        <% } else { %>
+                                        <i class="fa-solid fa-circle-minus" style="color: #da0303;"></i>
+                                        <% } %>
+                                        &#x20B9;<%= historyItem.amount %>
+                                    </td>
+                                    <td>&#x20B9;<%= historyItem.newBalance %></td>
+                                    <td><%= historyItem.updatedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %></td>
+                                </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                        <% } else { %>
+                        <div class="h1 text-lig">No Wallet History Available</div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+       

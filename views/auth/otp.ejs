@@ -1,0 +1,148 @@
+<%- include('./partials/header.ejs') %>
+<style>
+    
+    #resend-otp-btn {
+    background-color: #00f7ff;
+    color: white;
+    font-size: 12px;
+    font-weight: bold; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  /* Style for the disabled button */
+  #resend-otp-btn:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+  }
+
+</style>
+<section class="gradient-custom container vh-100">
+    <div class="container py-5 h-100 row justify-content-center align-items-center">
+            <div class="col-12 col-lg-9 col-xl-8">
+                <div class="card shadow-2-strong card-registration">
+                    <div class="card-body shadow" style="background-color: #EBEBEB;border-radius: 5px;">
+                        
+                        <form action="<%= localAction %>"  method="post" id="form" class="d-flex flex-column align-items-center mt-3">
+                            
+                            <div class="mb-5">
+                                <div class="fw-bold text-center fs-5 text-uppercase mb-1">OTP</div>
+                                <div class="text-center" style="font-size: 16px;">Enter OTP to continue</div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="email"></label>
+                                  <input type="text" id="otp" name="otp" style="box-shadow: none;" class="form-control" required/>
+                                </div>
+
+                                
+              
+                            </div>
+
+                            <div id="error-field" class="text-danger"></div>
+                            <div class="text-center text-danger"><%= message %></div>
+
+                            <div><span id="xid"></span> <span id="countdown-timer" style="color: rgb(12, 156, 12);"></span></div>
+
+                            <button type="submit" style="background-color: #ff0000;color: #fff;width: 200px;" class="btn fw-normal p-10 mb-3 mt-3">Submit</button>
+                                
+                            
+                            <!-- Add a button with an ID to trigger the resend OTP action -->
+<button id="resend-otp-btn" disabled>Resend OTP</button>
+
+
+<!-- Add the resend button which is initially hidden -->
+                
+                            
+                            
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+
+<!-- otp.ejs -->
+
+
+<script>
+//     document.getElementById('resend-otp-btn').addEventListener('click', () => {
+//   // Get the OTP input field
+//   const otpInput = document.getElementById('otp');
+
+//   // Toggle the "required" attribute on the OTP input field
+//   otpInput.required = !otpInput.required;
+// });
+// Function to start the countdown timer
+const startCountdown = () => {
+  let countdown = 30;
+  const countdownInterval = setInterval(() => {
+    if (countdown <= 0) {
+      // Enable the resend button after the countdown finishes
+      document.getElementById('resend-otp-btn').disabled = false;
+      document.getElementById('countdown-timer').textContent = '';
+      document.getElementById('xid').textContent=''; // Clear the countdown timer text
+      clearInterval(countdownInterval);
+    } else if(countdown>0 && countdown <10) {
+      // Show the countdown timer text
+      document.getElementById('countdown-timer').textContent = `00:0${countdown}`;
+      document.getElementById('xid').textContent='Resend OTP in';
+      countdown--;
+    }else{
+        document.getElementById('countdown-timer').textContent = `00:${countdown}`;
+        document.getElementById('xid').textContent='Resend OTP in';
+      countdown--;
+    }
+  }, 1000);
+};
+
+// Call the startCountdown function on page load
+window.onload = startCountdown;
+
+document.getElementById('resend-otp-btn').addEventListener('click', async () => {
+  try {
+    const userId = '<%= id %>'; // Access the user ID passed from the controller
+
+    const response = await fetch(`/resend-otp/${userId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const data = await response.json();
+    if (data.success) {
+      alert('OTP resent successfully.'); // Show success message or update the UI as needed
+
+      // Disable the resend button after successful resend
+      document.getElementById('resend-otp-btn').disabled = true;
+
+      // Restart the countdown timer
+      startCountdown();
+    } else {
+      alert('Failed to resend OTP.'); // Show error message or handle the error as needed
+    }
+  } catch (error) {
+    console.error(error);
+    alert('An error occurred while resending OTP.');
+  }
+});
+</script>
+
+
+
+
+
+
+    
+
+    
+
+
+<%- include('./partials/footer.ejs') %>

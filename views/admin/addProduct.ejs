@@ -1,0 +1,244 @@
+<%- include('./partials/adminheader.ejs') %>
+
+
+        
+        <%- include('./partials/sidebar.ejs') %>
+        
+ <style>
+    .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    width: 70%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.modal-header i {
+    font-size: 36px;
+    color: #f44336;
+    margin-right: 10px;
+}
+
+.modal-header h2 {
+    margin: 0;
+}
+
+.modal-body p {
+    margin: 0;
+    font-size: 18px;
+}
+ </style>
+            
+        <section class="gradient-custom container vh-100">
+            <div class="container py-5 h-100 row justify-content-center align-items-center">
+                    <div class="col-12 col-lg-9 col-xl-8">
+                        <div class="card shadow-2-strong card-registration" style="min-width:40rem;">
+                            <div class="card-body shadow" style="border-radius: 5px;">
+                                
+                                <form action="/admin/product/add" method="post" class="d-flex flex-column align-items-center mt-2" id="form" enctype="multipart/form-data">
+                                    
+                                    <div class="mb-3">
+                                        <div class="fw-bold text-center fs-6 text-uppercase mb-1">Product Information</div>
+                                    </div>
+    
+                                    <div class="col-md-6">
+    
+                                        <div class="form-outline mb-1">
+                                            <label class="form-label" style="font-size: .75rem;" for="productName">Product Name</label>
+                                            <input type="text" id="productName" name="productName" style="box-shadow: none;" class="form-control form-control-sm" required/>
+                                        </div>
+                                        
+                                        <div class="form-outline mb-1 d-flex justify-content-between">
+                                            <div class="col-6">
+                                                <label class="form-label" style="font-size: .75rem;" for="category">Category</label>
+                                                <select class="form-select form-select-sm input-sm shadow-none" name="category">
+                                                    
+                                                    <% categories.forEach((category)=>{ %>
+                                                    <option value="<%= category._id %>"><%= category.categoryName %></option>
+                                                    <% }) %>
+
+                                                </select>
+                                            </div>
+                                              
+                                             <div class="col-5 d-flex justify-content-between">
+                                                <div class="col-5">
+                                                    <label class="form-label" style="font-size: .75rem;" for="price">Price</label>
+                                                    <input type="text" id="price" name="price" style="box-shadow: none;" placeholder="00.00" class="form-control  form-control-sm" pattern="^\d+\.\d{2}$" required/>
+                                                </div>
+                                                <div class="col-5">
+                                                    <div class="form-outline mb-1">
+                                                        <label class="form-label" style="font-size: .75rem;" for="quantity">Quantity</label>
+                                                        <input type="number" min="0" id="quantity" name="quantity" style="box-shadow: none;" class="form-control  form-control-sm" required/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       <!-- <div class="form-outline mb-3 d-flex  ">
+                                          <label class="form-label" style="font-size: .75rem;" for="size">Sizes</label>
+                                         <div class="d-flex justify-content-between mt-2 " style="width: 20rem;"> 
+                                          <div class="form-check ml-4 my-2 mr-3 ">
+                                            <input class="form-check-input" type="checkbox" name="size" value="6" id="option6">
+                                            <label class="form-check-label" for="option6">6</label>
+                                          </div>
+                                        
+                                          <div class="form-check ml-4 my-2 ">
+                                            <input class="form-check-input" type="checkbox" name="size" value="7" id="option7">
+                                            <label class="form-check-label" for="option7">7</label>
+                                          </div>
+                                        
+                                          <div class="form-check ml-4 my-2 ">
+                                            <input class="form-check-input" type="checkbox" name="size" value="8" id="option8">
+                                            <label class="form-check-label" for="option8">8</label>
+                                          </div>
+                                        
+                                          <div class="form-check ml-4 my-2 ">
+                                            <input class="form-check-input" type="checkbox" name="size" value="9" id="option9">
+                                            <label class="form-check-label" for="option9">9</label>
+                                          </div>
+                                        
+                                          <div class="form-check ml-4 my-2">
+                                            <input class="form-check-input" type="checkbox" name="size" value="10" id="option10">
+                                            <label class="form-check-label" for="option10">10</label>
+                                          </div>
+                                        
+                                           <div class="form-check ml-4 my-2">
+                                            <input class="form-check-input" type="checkbox" name="size" value="11" id="option11">
+                                            <label class="form-check-label" for="option11">11</label>
+                                           </div>
+                                      </div>
+                                      </div> -->
+                                        
+                                        <div class="form-outline mb-1">
+                                            <label class="form-label" style="font-size: .75rem;" for="blurb">Blurb</label>
+                                            <textarea class="form-control form-control-sm" id="blurb" name="blurb" style="box-shadow: none;" rows="1" required></textarea>
+                                        </div>
+                                        
+                                        <div class="form-outline mb-1">
+                                            <label class="form-label" style="font-size: .75rem;" for="description">Description</label>
+                                            <textarea class="form-control form-control-sm" id="description" name="description" style="box-shadow: none;" rows="2" required></textarea>
+                                        </div>
+                                        
+                                        <div class="form-outline mb-1">
+                                            <label class="form-label" style="font-size: .75rem;" for="image">Image</label>
+                                            <input class="form-control form-control-sm" name="image" style="box-shadow: none;" type="file" id="formFileMultiple" accept="image/*" multiple required>
+                                        </div>
+                      
+                                      </div>
+    
+                                     
+    
+                                    <button type="submit" style="background-color: #da0303;color: #fff;width: 150px;" class="btn btn-sm fw-normal p-10 mb-3 mt-3">Create Product</button>    
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>  
+            <div id="nonImageModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="modal-header">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <h2>Error</h2>
+                    </div>
+                    <div class="modal-body">
+                        <p>Only image files are allowed.</p>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+                        
+                 
+      
+
+
+              <body>
+                <!-- ... (your page content) ... -->
+            
+                
+                <!-- Your SweetAlert code will be added here -->
+                <script>
+                  document.getElementById('createProductBtn').addEventListener('click', function() {
+                    // You can customize the SweetAlert message as per your requirement
+                    Swal.fire({
+                      icon: 'success',
+                      title: 'Product Created',
+                      text: 'Your product has been added successfully!',
+                      confirmButtonColor: '#da0303',
+                      confirmButtonText: 'OK'
+                    });
+                  });
+
+
+                  
+                </script>
+                <script>
+                    const uploadForm = document.getElementById('form');
+                    const imageInput = document.getElementById('formFileMultiple');
+                    const modal = document.getElementById('nonImageModal');
+                 
+                    uploadForm.addEventListener('submit', function (event) {
+                        if (!imageInput.files[0].type.startsWith('image')) {
+                            event.preventDefault(); // Prevent form submission
+                            modal.style.display = 'block';
+                        }
+                    });
+                 
+                    const closeBtn = modal.querySelector('.close');
+                    closeBtn.addEventListener('click', function () {
+                        modal.style.display = 'none';
+                    });
+                 </script>
+            
+                <!-- ... (other scripts and footers) ... -->
+              
+                <!-- Include SweetAlert JavaScript -->
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.all.min.js"></script>
+              </body>
+              
+             
+              <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+              <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+   
+
+    <%- include('./partials/adminfooter.ejs') %>

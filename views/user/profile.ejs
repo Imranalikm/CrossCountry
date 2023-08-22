@@ -1,0 +1,165 @@
+<%- include('./partials/header.ejs') %>
+<style>
+    .nav-link-box {
+  border: 1px solid rgb(174, 171, 171);
+  min-height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link-box:hover {
+  background-color: #f2ff00; /* Change to the desired hover color */
+}
+
+.nav-link {
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+}
+
+.nav-link:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+</style>
+
+<div class="container-fluid vh-100" style="padding-top: 10rem;">
+    <div class="row m-0  h-100">
+        <div class="col mt-4">
+            <div class="sticky-top">
+                <div class="row h-50 align-items-center">
+                    <div class="col">
+                        <div class="row h-75">
+                            <div class="col">
+                                <div class="row justify-content-center">
+                                    <div class="col-6 d-flex justify-content-center">
+                                        <div style="height: 8rem; width: 8rem; border: .2rem solid rgb(146, 143, 143);"
+     class="d-flex align-items-center justify-content-center" >
+  <i class="fa fa-user" style="font-size: 2.5rem;"></i>
+</div>
+
+                                       
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col-6 d-flex flex-column align-items-center">
+                                        <div class="row"><%=user.username%></div>
+                                        <div style="font-size: .75rem;" class="row"><%=user.createdAt.toLocaleDateString('en-US', { 
+                                            month: 'long', 
+                                            day: 'numeric',
+                                            year: 'numeric',});%></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center mt-4">
+                    <div class="col-6 d-flex flex-column">
+                      <div class="nav-link-box" style="background-color: #da0303;">
+                        <a href="/profile" class="nav-link text-light"> Profile <i class="fa fa-user"></i></a>
+                      </div>
+                      <!-- <div class="nav-link-box">
+                        <a href="/order" class="nav-link text-dark">Orders</a>
+                      </div> -->
+                      <div class="nav-link-box">
+                        <a href="/address" class="nav-link text-dark">Address</a>
+                      </div>
+                      <!-- <div class="nav-link-box">
+                        <a href="/wallet" class="nav-link text-dark">Wallet<i class="fa-solid fa-wallet" style="color: #6a6262;"></i></a>
+                      </div> -->
+                  
+                    </div>
+                  </div>
+                  
+              
+            </div>
+        </div>
+        <!-- <div class="col">
+            <div class="col-lg-8">
+                <div class="card mt-4">
+                <div class="card-header bg-light py-4 ">
+                    <h4 class="mb-0">My Profile</h4>
+                    <p class="mb-0">Time for a Sharp My profile.</p>
+                </div>
+                <div class="card-body ">
+                    
+                    <form>
+                            <div class="form-group focused">
+                              <label class="form-control-label" for="input-username">Username</label>
+                              <input type="text" id="input-username" style="box-shadow: none;" class="form-control form-control-alternative bg-light" value="<%= user.username %>" readonly>
+                            </div>
+                            <div class="form-group">
+                              <label class="form-control-label" for="input-email">Email address</label>
+                              <input type="email" id="input-email" style="box-shadow: none;" class="form-control form-control-alternative bg-light" value="<%= user.email %>" readonly>
+                          </div>
+                    </form>
+                    <div class="d-flex justify-content-between align-items-center pt-2">
+                    <a href="/profile/edit?id=<%= user._id%>" class="btn btn-dark ">Edit Profile</a>
+                    <a href="/profile/oldPassword" class="btn btn-secondary text-dark fw-bold " style="background-color: yellow;border-color: yellow;">Change Password</a>
+                    </div>
+                  </div>
+                </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="col">
+            <div class="col-lg-8">
+                <div class="card mt-4">
+                    <div class="card-header  text-white py-4" style="background-color: #da0303;">
+                        <h4 class="mb-0">My Profile</h4>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group focused">
+                                <label class="form-control-label" for="input-username">Username</label>
+                                <input type="text" id="input-username" style="box-shadow: none;" class="form-control form-control-alternative bg-light" value="<%= user.username %>" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-email">Email address</label>
+                                <input type="email" id="input-email" style="box-shadow: none;" class="form-control form-control-alternative bg-light" value="<%= user.email %>" readonly>
+                            </div>
+                        </form>
+                        <div class="d-flex justify-content-between align-items-center pt-2">
+                            <a href="/profile/edit?id=<%= user._id%>" class="btn  text-dark fw-bold" style="background-color: #f2ff00;font-weight: 800;">Edit Profile</a>
+                            <a href="/profile/oldPassword" class="btn  text-dark fw-bold" style="background-color: #f2ff00;font-weight: 800;">Change Password</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+</section>
+        </div>
+    </div>
+   </div>
+
+    
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+<!-- Js Plugins -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+<script src="/home/js/jquery-3.3.1.min.js"></script>
+<script src="/home/js/bootstrap.min.js"></script>
+<script src="/home/js/jquery.nice-select.min.js"></script>
+<script src="/home/js/jquery-ui.min.js"></script>
+<script src="/home/js/jquery.slicknav.js"></script>
+<script src="/home/js/mixitup.min.js"></script>
+<script src="/home/js/owl.carousel.min.js"></script>
+<script src="/home/js/main.js"></script>
+
+
+   
+
+
+
+</body>
+
+</html>
+   

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CrossCountry</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="/home/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/style.css" type="text/css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="/home/css/easyzoom.css" / type="text/css">
+   
+    <style>
+        #snackbar, #snackbar-error{
+          visibility: hidden;
+          min-width: 250px;
+          margin-left: -125px;
+          background-color: #ffff02;
+          color: #fff;
+          text-align: center;
+          border-radius: 2px;
+          padding: 10px;
+          position: fixed;
+          z-index: 1;
+          left: 50%;
+          bottom: 100px;
+          font-size: 17px;
+          border-radius: 15px;
+        }
+        
+        #snackbar.show, #snackbar-error.show {
+          visibility: visible;
+          -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+          animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+        
+        @-webkit-keyframes fadein {
+          from {bottom: 0; opacity: 0;} 
+          to {bottom: 30px; opacity: 1;}
+        }
+        
+        @keyframes fadein {
+          from {bottom: 0; opacity: 0;}
+          to {bottom: 30px; opacity: 1;}
+        }
+        
+        @-webkit-keyframes fadeout {
+          from {bottom: 30px; opacity: 1;} 
+          to {bottom: 0; opacity: 0;}
+        }
+        
+        @keyframes fadeout {
+          from {bottom: 30px; opacity: 1;}
+          to {bottom: 0; opacity: 0;}
+        }
+
+
+
+
+
+        .address .active {
+          border-color: #28a745 !important;
+          background-color: #f2f2f2;
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18), 0 3px 6px rgba(0, 0, 0, 0.23);
+        }
+
+        .card {
+          cursor: pointer;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15), 0 2px 5px rgba(0, 0, 0, 0.2);
+          -webkit-transition: all 0.5s ease;
+          -moz-transition: all 0.5s ease;
+          -o-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+        }
+
+
+    </style>
+    <style>
+        /* Custom Card Style */
+.custom-card {
+    background-color: #f3f6fa;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Style */
+.custom-card h1 {
+    margin: 0;
+    padding: 20px 0 0 30px;
+    font-size: 2.5rem;
+}
+
+/* Invoice Style */
+.invoice {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Order Confirmed Heading */
+.invoice h5 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Paragraph Style */
+.invoice p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+/* Payment Table */
+.payment table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.payment th,
+.payment td {
+    padding: 10px 0;
+    border-bottom: 1px solid #dee2e6;
+}
+
+/* Product Table */
+.product table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.product img {
+    max-width: 90px;
+}
+
+.product th,
+.product td {
+    padding: 10px 0;
+    border-bottom: 1px solid #dee2e6;
+}
+
+/* Totals Table */
+.totals table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.totals th,
+.totals td {
+    padding: 10px 0;
+}
+
+/* Footer Style */
+.footer {
+    background-color: #ffffff;
+    border-top: 1px solid #dee2e6;
+    border-radius: 8px;
+    margin-top: 30px;
+}
+
+.footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* Brand Text Style */
+.brand-text {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+    </style>
+
+    <!-- <div class="container mt-5 mb-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-8 py-5">
+                <div class="card" style="background-color: #f3f6fa;">
+                    <h1 class="m-0 display-5 font-weight-semi-bold text-danger px-3"><span class="text-dark font-weight-bold">Cross</span>Country</h1>
+                    <div class="invoice p-5">
+                        <h5>Your Order Confirmed!</h5>
+                        <span class="font-weight-bold d-block mt-4">Hello <%= user.username %></span>
+                        <span>Thank you for your order!</span>
+                        <div class="payment border-top mt-3 mb-3 border-bottom table-responsive">
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="py-2">
+                                                <span class="d-block text-muted">Order Date</span>
+                                                <span><%= order.order_date.toLocaleDateString('en-US', { 
+                                                    month: 'long', 
+                                                    day: 'numeric',
+                                                    year: 'numeric',}) %></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="py-2">
+                                                <span class="d-block text-muted">Order ID</span>
+                                                <span><%= order._id.toString().substring(0,6) %></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                         
+                                        </td>
+                                        <td>
+                                            <div class="py-2">
+                                                <span class="d-block text-muted">Shipping Address</span>
+                                                <span><%= address.phonenumber%></span><br>
+                                                <span><%= address.buildingName %></span>
+                                                <span><%= address.city %></span><br>
+                                                <span><%= address.state %>, <%= address.country %></span><br>
+                                                <span><%= address.pincode %></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="product border-bottom table-responsive">
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <% product.items.forEach((item)=>{  %>
+                                    <tr>
+                                     
+                                        <td width="20%">
+                                            <img src="<%= item.product.image[0].url %>" width="90">
+                                        </td>
+                                        <td width="60%">
+                                            <span class="font-weight-bold"><%= item.product.productName %></span>
+                                            <div class="product-qty">
+                                                <span class="d-block">quantity: <%= item.quantity %></span>
+                                                
+                                            </div>
+                                        </td>
+                                        <td width="20%">
+                                            <div class="text-right">
+                                                <span class="font-weight-bold">Rs.<%= (item.product.price * item.quantity).toFixed(2) %></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row d-flex justify-content-end">
+                            <div class="col-md-5">
+                                <table class="table table-borderless">
+                                    <tbody class="totals">
+                                        <tr class="border-top border-bottom">
+                                            <td>
+                                                <div class="text-left">
+                                                    <span class="font-weight-bold">Coupon</span>
+                                                    <span class="font-weight-bold">Total</span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="text-right">
+                                                    <span class="font-weight-bold">Rs. <% if(coupon != null){ %> <%= coupon.discount %> <%} else {%> 0 <% } %></span>
+                                                    <span class="font-weight-bold">Rs.<%= order.price.toFixed(2) %></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <p class="font-weight-bold mb-0">Thanks for shopping with us!</p>
+                        <span>CROSSCOUNTRY</span>
+                    </div>
+                    <div class="d-flex justify-content-between footer p-3">
+                        <span>CROSSCOUNTRY <a href="/shop" style="font-size: 1rem;" class="mx-2 navbar-brand text-info">Continue Shopping</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="container-fluid  mb-5" style="background-color: rgba(212, 231, 255, 0.813);">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-8 py-5">
+                <div class="card custom-card">
+                     
+                    <div class="invoice p-5" >
+                        <div class="d-flex">
+                        <!-- <img src="/images/logo.jpg" alt="" style="height:4rem ;width: 4rem;"> -->
+                        <h1 class="m-0 display-5 font-weight-bold text-danger px-3"><span class="text-warning font-weight-bold">Cross</span>Country</h1>
+                    </div>
+                        <h5 class="font-weight-bold mt-2">Your Order Confirmed!</h5>
+                        <p class="font-weight-bold mt-4">
+                            Hello <%= user.username %>
+                        </p>
+                        <p>Thank you for your order!</p>
+                        <div class="payment border-top mt-3 mb-3 border-bottom table-responsive">
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="py-2">
+                                                <span class="d-block text-muted">Order Date</span>
+                                                <span><%= order.order_date.toLocaleDateString('en-US', { 
+                                                    month: 'long', 
+                                                    day: 'numeric',
+                                                    year: 'numeric',}) %></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="py-2">
+                                                <span class="d-block text-muted">Order ID</span>
+                                                <span><%= order._id.toString().substring(0,6) %></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                         
+                                        </td>
+                                        <td>
+                                            <div class="py-2">
+                                                <span class="d-block text-muted">Shipping Address</span>
+                                                <span><%= address.phonenumber%></span><br>
+                                                <span><%= address.buildingName %></span>
+                                                <span><%= address.city %></span><br>
+                                                <span><%= address.state %>, <%= address.country %></span><br>
+                                                <span><%= address.pincode %></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="product border-bottom table-responsive">
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <% product.items.forEach((item)=>{  %>
+                                    <tr>
+                                     
+                                        <td width="20%">
+                                            <img src="<%= item.product.image[0].url %>" width="90">
+                                        </td>
+                                        <td width="60%">
+                                            <span class="font-weight-bold"><%= item.product.productName %></span>
+                                            <div class="product-qty">
+                                                <span class="d-block">quantity: <%= item.quantity %></span>
+                                                
+                                            </div>
+                                        </td>
+                                        <td width="20%">
+                                            <div class="text-right">
+                                                <span class="font-weight-bold">Rs.<%= (item.product.price * item.quantity).toFixed(2) %></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row d-flex justify-content-end">
+                            <div class="col-md-5">
+                                <table class="table table-borderless">
+                                    <tbody class="totals">
+                                        <tr class="border-top border-bottom">
+                                            <td>
+                                                <div class="text-left d-flex flex-column">
+                                                    <span class="font-weight-bold mb-2">Coupon</span>
+                                                    <span class="font-weight-bold">Total</span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="text-right d-flex flex-column">
+                                                    <span class="font-weight-bold">
+                                                        Rs.
+                                                        <% if (coupon != null) { %>
+                                                            <%= coupon.discount %>
+                                                        <% } else { %>
+                                                            0
+                                                        <% } %>
+                                                    </span>
+                                                    <span class="font-weight-bold">
+                                                        Rs.<%= order.price.toFixed(2) %>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <p class="font-weight-bold mb-0">
+                            Thanks for shopping with us!
+                        </p>
+                        <span class="brand-text">CROSSCOUNTRY</span>
+                        <div class="d-flex justify-content-between footer p-3">
+                            <span class="brand-text">
+                                CROSSCOUNTRY
+                                <a href="/shop" class="mx-2 navbar-brand text-info">
+                                    Continue Shopping
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    

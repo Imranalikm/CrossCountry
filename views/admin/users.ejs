@@ -1,0 +1,64 @@
+<%- include('./partials/adminheader.ejs') %>
+
+
+   
+        
+        
+        <%- include('./partials/sidebar.ejs') %>
+        
+      <div class="container">
+            <div class="table-scrollable table-responsive">
+            <table class="table table-success table-striped table-responsive " >
+                <thead>
+
+                    <tr>
+                        <th>sl.no</th>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>Status</th>
+                        <th>Edit</th>
+                    </tr>
+                    
+                </thead>
+
+                <tbody>
+
+                    <% users.forEach((user,i)=>{ %>
+                        <tr>
+                            <td>   <%= i+1 %>    </td>
+                            <td>   <%= user.username %>  </td>
+                            <td>   <%= user.email%>  </td>
+
+                            <% if(user.isAccess){ %>
+                                <th><span class="text-success">Active</span></th>
+                            <% }else{ %>
+                                <th><span class="text-danger">Blocked</span></th>
+                            <% } %>
+                            <% if(user.isAccess){ %>
+                            <td><a href="/admin/user/edit?id=<%= user._id %>">  <button type="button" class="btn btn-danger">Block</button></a></td>
+                            <% }else{ %>
+                                <td><a href="/admin/user/edit?id=<%= user._id %>">  <button type="button" class="btn btn-success">Unblock</button></a></td>
+                                <% } %>
+                        </tr>
+                    <% }) %>
+                        
+                        
+                </tbody>
+            </table>
+          </div>
+        </div>
+          
+
+            
+
+       
+
+
+          
+
+            
+
+       
+    </div>
+
+    <%- include('./partials/adminfooter.ejs') %>

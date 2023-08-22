@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CrossCountry</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="/home/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/style.css" type="text/css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="/home/css/easyzoom.css"  type="text/css">
+   
+    <style>
+        #snackbar, #snackbar-error{
+          visibility: hidden;
+          min-width: 250px;
+          margin-left: -125px;
+          background-color: #ffff02;
+          color: #fff;
+          text-align: center;
+          border-radius: 2px;
+          padding: 10px;
+          position: fixed;
+          z-index: 1;
+          left: 50%;
+          bottom: 100px;
+          font-size: 17px;
+          border-radius: 15px;
+        }
+        
+        #snackbar.show, #snackbar-error.show {
+          visibility: visible;
+          -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+          animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+        
+        @-webkit-keyframes fadein {
+          from {bottom: 0; opacity: 0;} 
+          to {bottom: 30px; opacity: 1;}
+        }
+        
+        @keyframes fadein {
+          from {bottom: 0; opacity: 0;}
+          to {bottom: 30px; opacity: 1;}
+        }
+        
+        @-webkit-keyframes fadeout {
+          from {bottom: 30px; opacity: 1;} 
+          to {bottom: 0; opacity: 0;}
+        }
+        
+        @keyframes fadeout {
+          from {bottom: 30px; opacity: 1;}
+          to {bottom: 0; opacity: 0;}
+        }
+
+
+
+
+
+        .address .active {
+          border-color: #28a745 !important;
+          background-color: #f2f2f2;
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18), 0 3px 6px rgba(0, 0, 0, 0.23);
+        }
+
+        .card {
+          cursor: pointer;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15), 0 2px 5px rgba(0, 0, 0, 0.2);
+          -webkit-transition: all 0.5s ease;
+          -moz-transition: all 0.5s ease;
+          -o-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+        }
+           
+        #heroContainer {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+/* .banner-item {
+    flex: 0 0 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+} */
+    </style>
+</head>
+ <!-- Page Preloder -->
+ <!-- <div id="preloder">
+    <div class="loader"></div>
+</div> -->
+
+
+
+<!-- Humberger Begin -->
+<div class="humberger__menu__overlay"></div>
+<div class="humberger__menu__wrapper">
+    <div class="humberger__menu__logo">
+        <a href="#"><img class="ml-5" src="/home/img/logo.png" alt="" style="margin-left: 2rem;" ></a>
+    </div>
+    <div class="humberger__menu__cart">
+        <ul>
+            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+        </ul>
+        <div class="header__top__right__auth">
+            <a class="navbar-brand text-dark fs-4 fw-bold" href="#"><span class="text-danger"></span></a>
+        </div>
+        
+    </div>
+    
+    <nav class="humberger__menu__nav mobile-menu">
+        <ul>
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/shop">Shop</a></li>
+            <li><a href="#">About</a></li>
+            <% if (user && user.username) { %>
+                <li class="">
+                    <div>
+                    <a href="#" style="text-decoration: none">
+                         <%= user.username %>
+                         <i class="fa fa-user"> </i> 
+                     </a>
+                </div>
+                    <ul class="header__menu__dropdown">
+                        <li><a href="/profile" style="text-decoration: none"><i class="fa fa-user" style="font-size: larger;"></i><%= user.username %>'s Profile</a>
+                        </li>
+                        <li><a href="" style="text-decoration: none">Orders</a>
+                        <!-- </li>
+                        <li><a href="/logout" style="text-decoration: none">Logout</a>
+                        </li> -->
+                    </ul>
+                </li>
+                <% } %>
+        </ul>      
+    </nav>
+    <div id="mobile-menu-wrap"></div>
+
+</div>
+<!-- Humberger End -->
+
+<!-- Header Section Begin -->
+ <header class="header sticky-nav">
+
+    <div class="container-fluid" style="background-color: #fdfdfd;" >
+        <div class="row">
+            <div class="col-lg-3 d-flex align-items-center">
+                <div class="header__logo  d-flex align-items-center" style="margin-left: 2rem;">
+                    
+                    <a class="navbar-brand text-dark fs-4 fw-bold" href="#"><img src="/home/img/logogo.png" alt=""></a>
+                    <!-- <div class="" style="font-weight: bold;font-size: large;font-family: sans-serif;">
+                        CROSS<span style="color: red;">COUNTRY</span>
+                    </div> -->
+                </div>
+                
+            </div>
+            <div class="col-lg-7 d-flex justify-content-between align-items-center">
+                <nav class="header__menu ml-3">
+                    <ul>
+                        <li class=""><a href="/">Home</a></li>
+                        <li><a href="/shop">Shop</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        
+                        <% if (user && user.username) { %>
+                        <li class="">
+                            <div>
+                            <a href="#" style="text-decoration: none">
+                                 <%= user.username %>
+                                 <i class="fa fa-user"> </i> 
+                             </a>
+                        </div>
+                            <ul class="header__menu__dropdown">
+                                <li><a href="/profile" style="text-decoration: none;font-weight: bold;color: #000000;"><i class="fa fa-user" style="font-weight: bold ;color: #000000 ;"></i><%= user.username %>'s Profile</a>
+                                </li>
+                                <li><a href="/order" style="text-decoration: none;font-weight: bold;color: #000000;"><i class="fa-solid fa-list-radio" style="font-weight: bold;color: #000000;"></i>Orders</a>
+                                </li>
+                                <li><a href="/wallet" style="text-decoration: none;font-weight: bold;color: #000000;"><i class="fa-solid fa-wallet" style="font-weight: bold;color: #000000;"></i>Wallet</a>
+                                </li>
+                                <li><a href="/logout" style="text-decoration: none;font-weight: bold;color: #000000;"><i class="fa fa-sign-out"></i>Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <% } %>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-2 d-flex justify-content-between align-items-center">
+                <div class="header__cart">
+                   
+
+                    <div class="header__top__right__auth">
+
+                        <% if(!id) {%>
+                        
+                        
+
+                        <div class="header__top__right__auth">
+                            <a onclick="login()"><i class="fa fa-user"></i> Login</a>
+                        </div>
+
+                        <% } else {%>
+                        
+
+                        <ul>
+                            
+                            <li><a href="/wishlist"><i class="fa fa-heart"></i> <span><%=user.wishlist.length%></span></a></li>
+                            <li id="cart"><a href="/cart"><i class="fa fa-shopping-bag"></i> <span> </span></a></li> 
+                        </ul>
+
+                        <!-- <div class="header__top__right__auth">
+                            <a href="/profile"><i class="fa fa-user" style="width: 2rem;height: 2rem;"></i><%= user.username %></a>
+                        </div> -->
+
+                        <!-- <div class="header__top__right__auth">
+                            <a href="/logout" style="box-shadow: none;border: none;" class="btn btn-sm btn-outline-danger">Logout</a>
+                        </div> -->
+                        
+                        <% } %>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        </div>
+        <div class="humberger__open">
+            <i class="fa fa-bars"></i>
+        </div>
+    </div>
+</header>
+
+<body>
+
+    
+    <!-- Header Section End -->
+
+    <!-- Hero Section Begin -->
+    <section class="hero">
+        <div class="container" style="margin-top: 8rem;" >
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="hero__categories">
+                        <div class="hero__categories__all">
+                            <i class="fa fa-bars"></i>
+                            <span>All Categories</span>
+                        </div>
+        
+                        <ul>
+                            <% categories.forEach((category)=>{ %>
+                            <li><a href="/shop?category=<%= category._id %>"><%= category.categoryName %></a></li>
+                            <% }) %>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="hero__search">
+                        <div class="hero__search__form">
+                            <form >
+                                <input type="text" id="search" name="search" class="text-dark font-weight-bold" placeholder="What do yo u need?">
+                                <button type="button" onclick="advanceSearch()" class="site-btn">SEARCH</button>
+                            </form>
+                        </div>
+                    </div>
+                    <% if(banners.length<1){ %>
+                    <div class="hero__item set-bg" data-setbg="/home/img/hero/banner2.jpg">
+                        <div class="hero__text">
+                            <span class="" style="color: #f5f905;">CROSSCOUNTRY</span>
+                            <h2 style="color: white;">Latest <br />trending Shoes</h2>
+                            <p style="color: white;">Free Pickup and Delivery Available</p>
+                            <a href="/shop" class="primary-btn">SHOP NOW</a>
+                        </div>
+                    </div> 
+                    <%}else {%>
+                      
+    
+     <div class="hero__item set-bg banner-item" data-index="0">
+        <div class="hero__text">
+            <span class="banner-category" style="color: #f5f905;"></span>
+            <h2 class="banner-text" data-color=""></h2>
+            <p style="color: white;"></p>
+            <a href="" class="primary-btn">SHOP NOW</a>
+        </div>
+    </div>
+</div> 
+<% } %>
+   
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+    <section class="categories">
+        <div class="container">
+            <div class="row">
+                
+                    <div class="col-lg-12">
+                        <div class="section-title">
+                            <h2>Categories</h2>
+                        </div>
+                    </div>
+                
+                <div class="categories__slider owl-carousel">
+                    <% for(let i=0;i< categories.length;i++){ %>
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="<%= categories[i].image[0].url %>" style="border-radius: 2rem;">
+                            <h5><a href="/shop?category=<%= categories[i]._id %>"><%= categories[i].categoryName %> </a></h5>
+                        </div>
+                    </div>
+                    <% } %>
+                </div>   
+            </div>
+        </div>
+    </section>
+    <!-- Featured Section Begin -->
+    <section class="featured spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Featured Product</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row featured__filter">
+                
+                <% for(let i=0;i<products.length;i++){ %>
+                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+                    <div class="featured__item">
+                        <div class="featured__item__pic set-bg" data-setbg="<%= products[i].image[0].url %>">
+                            <ul class="featured__item__pic__hover">
+                               
+                                <li><a href="/shopDetails?id=<%= products[i]._id %>"><i class="fa fa-info"></i></a></li>
+                                <!-- <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li> -->
+                            </ul>
+                        </div>
+                        <div class="featured__item__text">
+                            <h6><a href="#"><%= products[i].productName %></a></h6>
+                            <h5>Rs.<%= products[i].price %></h5>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+        </div> 
+    </section>
+
+    
+     <div class="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="banner__pic">
+                        <img src="/home/img/hero/banner1.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="banner__pic">
+                        <img src="/home/img/hero/banner3.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+
+    <script>
+        function login(){
+            const currentUrl = location.href;
+            location.href= `/login?url=${currentUrl}`
+        }
+        document.addEventListener("keydown", function (event) {
+
+  var keycode = event.keyCode || event.which;
+
+  if (keycode === 13) {
+    
+    event.preventDefault();
+
+    advanceSearch();
+  }
+});
+        function advanceSearch(){
+            const search = $("#search").val();
+
+            location.href = `/shop?search=${search}`;
+        }
+         
+        
+     </script>
+     <script>
+        // Add this JavaScript to your page or an external script
+
+const banners = [
+    <% banners.forEach((banner, index) => { %>
+    {
+        category: "<%= banner.category %>",
+        caption1Text: "<%= banner.caption1.text %>",
+        caption2Text: "<%= banner.caption2.text %>",
+        caption1Color: "<%= banner.caption1.color %>",
+        imageUrl: "<%= banner.bannerImage.url %>"
+    },
+    <% }) %>
+];
+
+const bannerContainer = document.querySelector('.banner-item');
+const bannerCategory = document.querySelector('.banner-category');
+const bannerText = document.querySelector('.banner-text');
+let currentIndex = 0;
+
+function showBanner(index) {
+    const banner = banners[index];
+    // bannerCategory.textContent =;
+    bannerText.textContent = banner.caption1Text + '\n' + banner.caption2Text;
+    bannerText.style.color = banner.caption1Color;
+    bannerContainer.style.backgroundImage = `url(${banner.imageUrl})`;
+}
+
+function nextBanner() {
+    currentIndex = (currentIndex + 1) % banners.length;
+    showBanner(currentIndex);
+}
+
+// Show the first banner initially
+showBanner(currentIndex);
+
+// Automatically switch to the next banner after 3 seconds
+setInterval(nextBanner, 3000);
+
+     </script>
+
+    <%- include('./partials/footer.ejs') %>

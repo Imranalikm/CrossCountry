@@ -1,0 +1,117 @@
+<%- include('./partials/adminheader.ejs') %>
+
+
+    <style>
+                
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+
+
+
+
+
+        <%- include('./partials/sidebar.ejs') %>
+
+          
+        <section class="gradient-custom container-fluid ">
+            <div class="container-fluid py-5 h-100 row justify-content-center align-items-center">
+                    <div class="col-12 col-lg-9 col-xl-8">
+                        <div class="card shadow-2-strong card-registration">
+                            <div class="card-body shadow" style="background-color: #EBEBEB;border-radius: 5px;">
+                                
+                                <form class="d-flex flex-column align-items-center mt-3" id="form">
+                                    
+                                    <div class="mb-4">
+                                        <div class="fw-bold text-center fs-5 text-uppercase mb-1">Edit coupon</div>
+                                    </div>
+    
+                                    <div class="col-md-6">
+
+                                        <div class="form-outline mb-3">
+                                            <label class="form-label" for="expiryDate">Expiry Date</label>
+                                            <input type="date" id="expiryDate" name="expiryDate" style="box-shadow: none;" class="form-control" value="<%= expDate %>" required/>
+                                        </div>
+                                        
+                                        <div class="form-outline">
+                                            <label class="form-label" for="discount">Discount</label>
+                                            <input type="number" min="1" id="discount" name="discount" style="box-shadow: none;" class="form-control" value="<%= coupon.discount %>"  required/>
+                                        </div>
+
+                                        <input type="hidden" id="id" name="id" value="<%= coupon._id %>">
+                      
+                                      </div>
+    
+    
+                                    <button type="submit" style="background-color: #da0303;color: #fff;width: 200px;" class="btn fw-normal p-10 mb-3 mt-3">Add</button>
+        
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+        <!-- <b id="snackbar-error">Coupon Name already Existed</b> -->
+            
+
+       
+    </div>
+
+
+
+    <!-- axios cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.3/axios.min.js"></script>
+
+
+    <script>
+        const form = document.getElementById('form');
+        
+        const id = document.getElementById('id');
+        const discount = document.getElementById('discount');
+        const expiryDate = document.getElementById('expiryDate');
+
+        form.addEventListener('submit',(e)=>{
+            e.preventDefault();
+            
+            axios({
+                method: "post",
+                url: "/admin/coupon/edit",
+                data: {
+                    id: id.value,
+                    discount: discount.value,
+                    expiryDate: new Date(expiryDate.value),
+                }
+            })
+            .then((result)=>{
+                if(result.data.response){
+                    location.href= "/admin/coupon"
+                }else{
+                    let x = document.getElementById("snackbar-error");
+                    x.className = "show";
+                    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+                }
+            })
+
+        })
+        
+    </script>
+
+    <script>
+        // Get the current date and format it as "YYYY-MM-DD" to match the input date format
+        const currentDate = new Date().toISOString().split('T')[0];
+      
+        // Get the input element
+        const endDateInput = document.getElementById('expiryDate');
+      
+        // Set the minimum attribute to the current date
+        endDateInput.setAttribute('min', currentDate);
+      </script>
+
+    <%- include('./partials/adminfooter.ejs') %>

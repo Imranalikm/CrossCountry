@@ -1,0 +1,53 @@
+<%- include('./partials/adminheader.ejs') %>
+
+  
+        
+        <%- include('./partials/sidebar.ejs') %>
+
+        <div style="overflow-y: auto;" class="w-100 d-flex align-items-center align-items-center">
+
+            <div class="table" >
+                <table class="table table-light table-striped table-responsive" >
+                <thead>
+                    
+                    <tr>
+                        <th>sl.no</th>
+                        <th>Id</th>
+                        <th>Date</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th>Payment</th>
+                        <th>view</th>
+                    </tr>
+                    
+                </thead>
+                
+                <tbody>
+                        <% for(let i=0;i<orders.length;i++){ %>
+                        <tr>
+                            <td><%= i+1 %></td>
+                            <td><%= users[i]._id.toString().substring(0,6) %></td>
+                            <td><%=orders[i].order_date.toLocaleDateString('en-US', { 
+                                month: 'long', 
+                                day: 'numeric',
+                                year: 'numeric',}); %></td>
+                            <td>&#8377;<%= orders[i].price.toFixed(2) %></td>
+                            <td><%= orders[i].order_status %></td>
+                            <td>        
+                                <% if(orders[i].payment_method == "cod"){ %> Cash On Delivery <% } %>
+                                 <% if(orders[i].payment_method == "online"){ %> Online Payment <% } %>
+                                <% if(orders[i].payment_method == "wallet"){ %> Wallet Payment <% } %>
+                            </td>
+                            <td><a href="/admin/orderDetails?userId=<%=users[i].user._id %>&orderId=<%= users[i]._id %>" class="btn btn-primary">view</a></td>
+                        </tr>
+                        <% } %>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div >
+
+       
+    </div>
+
+    <%- include('./partials/adminfooter.ejs') %>

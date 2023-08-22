@@ -1,0 +1,31 @@
+{
+  "name": "myproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cloudinary": "^1.37.3",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "express-session": "^1.17.3",
+    "mongoose": "^7.3.1",
+    "nocache": "^4.0.0",
+    "nodemailer": "^6.9.3",
+    "path": "^0.12.7",
+    "razorpay": "^2.9.1",
+    "speakeasy": "^2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.46.0",
+    "eslint-plugin-ejs": "^0.0.2"
+  }
+}

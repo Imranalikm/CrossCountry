@@ -1,0 +1,368 @@
+<%- include('./partials/header.ejs') %>
+
+<style>
+   
+
+.card {
+    z-index: 0;
+    background-color: #ECEFF1;
+    padding-bottom: 20px;
+    margin-top: 90px;
+    margin-bottom: 90px;
+    border-radius: 10px;
+}
+
+.top {
+    padding-top: 40px;
+    padding-left: 13% !important;
+    padding-right: 13% !important;
+}
+
+/*Icon progressbar*/
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: #455A64;
+    padding-left: 0px;
+    margin-top: 30px;
+} 
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 13px;
+    width: 33.3%;
+    float: left;
+    position: relative;
+    font-weight: 400;
+}
+
+#progressbar .step0:before {
+    font-family: FontAwesome;
+    content: "\f10c";
+    color: #fff;
+}
+
+#progressbar li:before {
+    width: 40px;
+    height: 40px;
+    line-height: 45px;
+    display: block;
+    font-size: 20px;
+    background: #C5CAE9;
+    border-radius: 50%;
+    margin: auto;
+    padding: 0px;
+}
+
+/*ProgressBar connectors*/
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 12px;
+    background: #C5CAE9;
+    position: absolute;
+    left: 0;
+    top: 16px;
+    z-index: -1;
+}
+
+#progressbar li:last-child:after {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    position: absolute;
+    left: -50%;
+}
+
+#progressbar li:nth-child(2):after, #progressbar li:nth-child(3):after {
+    left: -50%;
+}
+
+#progressbar li:first-child:after {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    position: absolute;
+    left: 50%;
+}
+
+#progressbar li:last-child:after {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#progressbar li:first-child:after {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+/*Color number of the step and the connector before it*/
+#progressbar li.active:before, #progressbar li.active:after {
+    background: #da0303;
+}
+
+#progressbar li.active:before {
+    font-family: FontAwesome;
+    content: "\f00c";
+}
+
+.icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+}
+
+.icon-content { 
+    padding-bottom: 20px;
+}
+
+@media screen and (max-width: 992px) {
+    .icon-content {
+        width: 50%;
+    }
+}
+
+    .card-stepper {
+    z-index: 0
+    }
+</style>
+
+<div class="col-lg-12 mb-5">
+  <!-- <div class="card mt-4">
+  <div class="card-header bg-light py-4 ">
+      <h4 class="mb-0">#Order Details</h4>
+      <p class="mb-0"><%= order._id %></p>
+  </div> -->
+  <div class="card-body mt-5" id="order-track">
+
+    <div class="card">
+      <div class="row d-flex justify-content-between px-3 top">
+          <div class="d-flex">
+              <h5>ORDER ID <span class="text-dark font-weight-bold"><%= order._id %></span></h5>
+          </div>
+          <div class="d-flex flex-column text-sm-right">
+              <p class="mb-0">Order Placed On <span><%=order.order_date.toLocaleDateString('en-US', { year: 'numeric' ,
+                month: 'numeric' , day: 'numeric' });%></span></p>
+             
+          </div>
+      </div>
+      <% if(order.order_status!="cancelled" && order.order_status != "returned"){ %>
+      <!-- Add class 'active' to progress -->
+      <div class="row d-flex justify-content-center">
+          <div class="col-12">
+          <ul id="progressbar" class="text-center">
+            <li class="active step0"></li>
+            <li <% if(order.order_status == "shipped" || order.order_status == "delivered") {%> class="active step0" <%}else{%> class="step0" <% } %>></li>
+             
+              <!-- <li class="active step0"></li> -->
+            <li  <% if(order.order_status == "delivered") {%> class="active step0" <%}else{%> class="step0" <% } %>></li>
+          </ul>
+          </div>
+      </div>
+      <div class="row justify-content-between top">
+          <div class="row d-flex icon-content">
+              <img class="icon" src="https://i.imgur.com/9nnc9Et.png">
+              <div class="d-flex flex-column">
+                  <p class="font-weight-bold">Order<br>Processed</p>
+              </div>
+          </div>
+          <div class="row d-flex icon-content">
+              <img class="icon" src="https://i.imgur.com/u1AzR7w.png">
+              <div class="d-flex flex-column">
+                  <p class="font-weight-bold">Order<br>Shipped</p>
+              </div>
+          </div>
+       
+          <div class="row d-flex icon-content">
+              <img class="icon" src="https://i.imgur.com/HdsziHP.png">
+              <div class="d-flex flex-column">
+                  <p class="font-weight-bold">Order<br>Arrived</p>
+              </div>
+          </div>
+      </div>
+      <% }else if(order.order_status=="cancelled"){ %>
+        <div class="row d-flex justify-content-center">
+            <div class="col-12">
+            <ul id="progressbar" class="text-center">
+                <li <% if(order.order_status == "shipped" || order.order_status == "delivered") {%> class="active step0" <%}else{%> class="step0" <% } %>></li>
+                <li <% if(order.order_status == "cancelled") {%> class="active step0" <%}else{%> class="step0" <% } %>>Order Cancelled</li>
+            </ul>
+            </div>
+        </div>
+        <% }else if(order.order_status=="returned"){ %>
+            <div class="row d-flex justify-content-center">
+                <div class="col-12">
+                <ul id="progressbar" class="text-center">
+                    <li <% if(order.order_status == "shipped" || order.order_status == "delivered") {%> class="active step0" <%}else{%> class="step0" <% } %>></li>
+                    <li <% if(order.order_status == "returned") {%> class="active step0" <%}else{%> class="step0" <% } %>>Order Returned</li>
+                </ul>
+                </div>
+            </div>
+            <% } %>  
+  </div>
+      
+        <div class="card mx-3">
+          <div class="card-header">
+              Order details<br><small>Your order items</small>
+          </div>
+          <div class="card-body " style="overflow: auto;">
+              <% subtotal = 0%>
+              <table class="table text-center table-primary ">
+                  <colgroup>
+                      <col width="100" />
+                      <col />
+                      <col width="1" />
+                      <col />
+                      <col width="100" />
+                      <col />
+                      <col width="1" />
+                      <col />
+
+                  </colgroup>
+                  <thead class="bg-dark text-light">
+                      <tr>
+                          <th class="first">Image</th>
+                          <th class="text-center font-weight-500" >Product</th>
+                          <!-- <th class="text-center  font-weight-500" >Price</th> -->
+                          <th class="text-center  font-weight-500">Qty</th>
+                          <th class="text-start  font-weight-500">Total</th>
+                      </tr>
+                  </thead>
+                  <tbody class="table-bordered">
+                      <% for( let i=0; i < order.items.length; i++ ) { %>
+                          <tr class="bg-light">
+                              <td class="product-thumbnail text-start">
+                                  <a href="#"><img
+                                          src="<%=order.items[i].product.image[0].url %>"
+                                          alt="..." class="img-fluid" width="60vw"></a>
+                              </td>
+                              <td class="text-center" style="font-size: 1.2vw;">
+                                  <b class="text-dark ">
+                                      <%=order.items[i].product.productName %>
+                                  </b>
+                              </td>
+                              <!-- <td class="text-center text-dark" style="font-size: 1vw;">
+                                  <b>
+                                      <%=order.items[i].productPrice %>
+                                  </b>
+                              </td> -->
+                              <td class="text-center" style="font-size: 1vw;"><span><%=order.items[i].quantity %></span>
+                              </td>
+                              <td id="totalPrice"
+                                  class="product-subtotal text-center" style="font-size: 1vw;">
+                                  <span>&#8377;<%=(order.items[i].quantity * order.items[i].product.price).toFixed(2) %></span>
+                              </td>
+                          </tr>
+                          <% subtotal += (order.items[i].quantity * order.items[i].productPrice) %>
+                          <% } %>
+                  </tbody>
+              </table>
+
+
+              <div class="col-12 d-flex justify-content-end">
+                  <div class="d-flex flex-column w-25">
+                      <!-- <kbd class="font-weight-bolder mb-2 d-flex justify-content-between bg-secondary">Sub Total: <span>&#8377;<%= subtotal %>.00</span></kbd> -->
+                      <kbd class="bg-warning text-dark font-weight-bolder d-flex justify-content-between">Coupon: <span>- &#8377;<% if(coupon){ %><%= coupon.discount %><% }else{ %>0<% } %>.00</span></kbd>
+                      <kbd class="font-weight-bolder mt-2 d-flex justify-content-between">Total: <span>&#8377;<%= order.price.toFixed(2) %></span></kbd>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <div class="card m-3">
+          <div class="card-header">
+              Shipping Address
+          </div>
+          <div class="card-body">
+
+              <%=address.phonenumber%>,<br>
+              <%=address.buildingName%>,<%=address.street%>,<%=address.city%>,<br>
+              <%=address.state%>,<%=address.country%>,
+              <%=address.pincode%>,
+
+          </div>
+        </div>
+        <div class="card m-3">
+          <div class="card-header">
+              Payment Mode
+          </div>
+          <div class="card-body">
+              <% if(order.payment_method == "cod"){ %> Cash On Delivery <% } %>
+              <% if(order.payment_method == "online"){ %> Online Payment <% } %>
+              <% if(order.payment_method == "wallet"){ %> Wallet Payment <% } %>
+          </div>
+        </div>
+
+        <% if(Date.now() < new Date(new Date(order.order_date).getTime() + 2 * 24 * 60 * 60 * 1000) && order.order_status == "delivered"){  %>
+            <div class="card m-3">
+              <div class="card-header">
+                  Return Your Order
+              </div>
+              <div class="card-body">
+                  <button type="button" onclick="returnOrder()" class="btn btn-sm btn-dark">Return</button>
+              </div>
+            </div>
+            <% } %>
+    </div>
+  </div>
+  </div>
+
+
+<!-- axios cdn -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.3/axios.min.js"></script>
+
+<!-- sweet alert cdn -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"> </script>
+
+<script>
+  function login(){
+      const currentUrl = location.href;
+      location.href= `/login?url=${currentUrl}`
+  }
+</script>
+
+<script>
+     function returnOrder(){
+
+Swal.fire({
+    icon: "warning",
+    title: "Are you sure?",
+    text: "Return Order?",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Confirm",
+}).then((result) => {
+    if (result.isConfirmed) {
+        
+        $.ajax({
+            type: "POST",
+            url: "/order/return",
+            data: {
+                orderId: '<%= order._id %>'
+            },
+            success: function(res){
+                if(res.success){
+                    Swal.fire("Order Return!", "Order will be returned.", "success").then((response) => {
+                        $.get(location.href, function(data) {
+                            $("#order-track").html($(data).find("#order-track").html());
+                            // $("#order-return").html($(data).find("#order-return").html());
+                        });
+                    })
+                }
+            }
+            
+        })
+    
+    }
+});
+
+
+
+}
+
+
+</script>
+
+
+
+
+<%- include('./partials/footer.ejs') %>
+

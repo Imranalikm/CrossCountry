@@ -1,0 +1,62 @@
+<%- include('./partials/adminheader.ejs') %>
+
+
+        
+        <%- include('./partials/sidebar.ejs') %>
+
+        <div style="width:60rem;" class=" ml-5 d-flex">
+
+            <div class="table " style="margin-left:5rem;">
+                <table class="table table-success  table-responsive " >
+                <thead>
+                    
+                    <tr>
+                        <th>sl.no</th>
+                        <th>Image</th>
+                        <th>Product</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <!-- <th>Sizes</th> -->
+                        <th>Edit</th>
+                        <th>Edit Image</th>
+                        <th>Delete</th>
+                    </tr>
+                    
+                </thead>
+                
+                <tbody>
+                    
+                    <% products.forEach((product, i)=>{ %>
+                    
+                        <tr>
+                            <td><%= i+1 %></td>
+                            <td><img style="width: 1.5rem;height: 1.5rem;" src="<%= product.image[0].url %>" alt="">
+                                </td>
+                            <td><%= product.productName %></td>
+                            <% categories.forEach((category)=>{ %>
+                                <% if(category._id == product.category){ %>
+                                <td><%= category.categoryName %></td>
+                                <% } %>
+                            <% }) %>
+                            <td><%= product.price %></td>
+                            <td> <% if(product.quantity>0){ %> <%= product.quantity %> <% }else{ %> <span class="text-danger">Out of Stock </span><% } %></td>
+                            <!-- <td><%= product.sizes %></td> -->
+                            <td><a href="/admin/product/edit?id=<%= product._id %>"> <button type="button" class="btn btn-success">Edit</button></a></td>
+                            <td><a href="/admin/product/image?id=<%= product._id %>"> <button type="button" class="btn btn-warning"><i class="fas fa-edit" style="color: #000000;"></i></button></a></td>
+                            <td><a href="/admin/product/delete?id=<%= product._id %>&active=<%= product.isActive %>">  <button type="button" class="btn btn-danger"><% if(product.isActive) { %> Delete <% } else { %>Undo<% } %></button></a></td>
+                            
+                        </tr>
+                            
+                    <% }) %>
+                    
+                </tbody>
+            </table>
+        </div>
+       
+
+       
+    
+
+    <%- include('./partials/adminfooter.ejs') %>
+

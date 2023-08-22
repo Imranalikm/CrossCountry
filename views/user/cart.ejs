@@ -1,0 +1,258 @@
+<%- include('./partials/header.ejs') %>
+
+<style>
+    /* Cart Summary Section */
+.section-title {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.bg-light {
+  background-color: #f8f8f8;
+}
+
+/* Cart Summary Table */
+.bg-light .border-bottom {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.bg-light h6 {
+  color: #666;
+  font-weight: 500;
+}
+
+.bg-light .font-weight-medium {
+  font-weight: 500;
+}
+
+.pt-2 {
+  padding-top: 10px;
+}
+
+/* Cart Total */
+.d-flex.justify-content-between.mt-2 {
+  margin-top: 10px;
+}
+
+.d-flex.justify-content-between.mt-2 h5 {
+  color: #333;
+}
+
+/* Proceed To Checkout Button */
+.btn-proceed-to-checkout {
+  background-color: #da0303;
+  box-shadow: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.btn-proceed-to-checkout:hover {
+  background-color: #da0303;
+}
+
+/* Empty Cart Message */
+.image-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.image-container img {
+  height: 300px;
+  width: 450px;
+}
+
+.image-container h2 {
+  font-weight: bold;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* Optional: Add more custom styles as needed */
+
+</style>
+
+<div class="container-fluid mt-5" style="padding-top: 8rem;">
+    <div class="row px-xl-5" id="row">
+        <% if(products){ %>
+        <% if(products.items.length > 0) {%>
+        <div class="col-lg-8 table-responsive mb-5">
+            <table class="table table-bordered border-3  table-hover">
+              <thead class="">
+                <tr>
+                  <th scope="col">Product</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Total</th>
+                  <th scope="col">Remove</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <% for(let i=0;i<products.items.length;i++) { %>
+                <tr id="<%= products.items[i].productId._id %>">
+                  <td scope="row"><%= productList[i].productName %></td>
+                  <td class="align-middle">Rs.<%= productList[i].price %></td>
+                  <td class="align-middle  ">
+                    
+                    <div class="input-group quantity mx-auto" style="width: 150px;">
+                        <div class="input-group-btn" style="border-radius: 50%;">
+                            <button onclick="decrementQuantity('<%= products.items[i].productId._id %>', '<%= products.userId %>')" class="btn btn-sm btn-primary btn-minus" style="border-radius: 50%;" <% if(products.items[i].quantity <= 1) {%> disabled <% } %>>
+                            <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <div class="d-flex justify-content-center fw-bold" style="width: 4rem;"><%= products.items[i].quantity %></div>
+                        <!-- <input type="text" class="form-control form-control-sm bg-light border-0 text-center text-dark font-weight-bold" id="quantity" style="min-width: 1.5rem;" value="<%= products.items[i].quantity %>"> -->
+                        <div class="input-group-btn">
+                            <button onclick="incrementQuantity('<%= products.items[i].productId._id %>', '<%= products.userId %>')" class="btn btn-sm btn-primary btn-plus"  style="border-radius: 50%;" <% if(productList[i].quantity <= products.items[i].quantity) {%> disabled <% } %> ><i class="fa fa-plus"></i></button>
+                        </div>
+                    </div>
+                    
+                  </td>
+                  <td id="total" class="align-middle">Rs.<%= products.items[i].totalPrice.toFixed(2) %></td>
+                  <td class="align-middle"><button onclick="removeItem('<%= products.items[i].productId._id %>', '<%= products.userId %>')" style="box-shadow: none;" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
+                </tr>
+                <% } %>
+
+              </tbody>
+            </table>
+        </div>
+        <div class="col-lg-4">
+            
+            <h5 class="section-title position-relative text-uppercase  mb-1" style="background-color: #da0303;border-radius: 10px;"><span class="text-light fw-bold " >Cart Summary</span></h5>
+            <div class="bg-light  mb-5" style="border-radius: 10px;padding: 10px;">
+                <div class="border-bottom ">
+                    <div class="d-flex justify-content-between mb-3" id="subtotal">
+                        <h6>Subtotal</h6>
+                        <h6>Rs.<%= products.cartPrice.toFixed(2) %></h6>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <h6 class="font-weight-medium">Shipping</h6>
+                        <h6 class="font-weight-medium">RS.0</h6>
+                    </div>
+                    <!-- <div class="d-flex justify-content-between">
+                        <h6 class="font-weight-medium">Coupon</h6>
+                        <h6 class="font-weight-medium">$0</h6>
+                    </div> -->
+                </div>
+                <div class="pt-2">
+                    <div class="d-flex justify-content-between mt-2" id="carttotal">
+                        <h5>Cart Total</h5>
+                        <h5>Rs.<%= products.cartPrice.toFixed(2) %></h5>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                      <a href="/checkout/address" style="background-color: #da0303;box-shadow: none;" class="col-6 btn btn-block btn-sm text-light font-weight-bold my-3">Proceed To Checkout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% }else{ %>
+            <div class="col-12 mb-4  d-flex justify-content-center align-items-center">
+                <div class="image-container">
+                    <img class="image-fluid" src="/images/4610092.webp" alt="" style="height: 300px;width:450px;"  >
+                    <h2 class="d-flex justify-content-center fw-bold ">Cart is Empty</h2>
+                </div>
+               
+                
+            </div>
+        <% } %>
+        <% }else{ %>
+            <div class="col-12 mb-4 d-flex justify-content-center align-items-center">
+                <div class="image-container">
+                    <img class="image-fluid" src="/images/4610092.webp" alt="" style="height: 300px;width:450px"  >
+                    <h2 class="d-flex justify-content-center fw-bold ">Cart is Empty<h2>
+                </div>
+               
+                
+            </div>
+        <% } %>
+    </div>
+</div>
+<!-- Cart End -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<!-- axios cdn -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.3/axios.min.js"></script>
+
+<!-- cart.ejs -->
+
+<!-- ... Your existing code ... -->
+
+<script>
+    
+    function decrementQuantity(productId, userId){
+            
+            $.ajax({
+                type: "GET",
+                url: "/decrementQuantity",
+                data: {
+                    userId: userId,
+                    productId: productId,
+                },
+                success: function(res){
+                    if(res.response){
+                        
+                        $.get(location.href, function(data) {
+                            $(`#${productId}`).html($(data).find(`#${productId}`).html());
+                            $("#carttotal").html($(data).find("#carttotal").html());
+                            $("#subtotal").html($(data).find("#subtotal").html());
+                        });
+                    }
+                }
+            })
+        }
+
+        function incrementQuantity(productId, userId){
+            
+            $.ajax({
+                type: "GET",
+                url: "/incrementQuantity",
+                data: {
+                    userId: userId,
+                    productId: productId,
+                },
+                success: function(res){
+                    if(res.response){
+                        
+                        $.get(location.href, function(data) {
+                            $(`#${productId}`).html($(data).find(`#${productId}`).html());
+                            $("#carttotal").html($(data).find("#carttotal").html());
+                            $("#subtotal").html($(data).find("#subtotal").html());
+                        });
+                    }
+                }
+            })
+
+        }
+
+        function removeItem(productId, userId){
+
+            $.ajax({
+                type: "POST",
+                url: "/removeItem",
+                data: {
+                    userId: userId,
+                    productId: productId,
+                },
+                success: function(res){
+                    if(res.response){
+                        
+                        $.get(location.href, function(data) {
+                            $("#row").html($(data).find("#row").html());
+                            $("#cart").html($(data).find("#cart").html());
+                        });
+                    }
+                }
+            })
+        }
+
+       
+
+
+
+</script>
+
+  
+
+
+<%- include('./partials/footer.ejs') %>

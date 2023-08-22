@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Failure</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    h1 {
+      font-size: 24px;
+      color: #da0303;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 16px;
+      color: #333;
+      margin: 10px 0;
+    }
+    .icon {
+      font-size: 64px;
+      color: #da0303;
+      margin-bottom: 20px;
+    }
+    a {
+      text-decoration: none;
+      color: #da0303;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    a:hover {
+      color: #c70000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">
+      <i class="fas fa-exclamation-triangle"></i>
+    </div>
+    <h1>Payment Failed</h1>
+    <p>Unfortunately, your payment could not be processed.</p>
+    <p>Please contact our customer support for further assistance.</p>
+    <a href="/">Return to Homepage</a>
+  </div>
+</body>
+</html>
