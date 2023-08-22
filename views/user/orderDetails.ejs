@@ -197,8 +197,20 @@
                 </div>
             </div>
             <% } %>  
-  </div>
-      
+  </div>    
+            <%if(order.order_status=="delivered"){%>
+                   <div class="card m-3">
+                    <div class="card-header">
+                         Invoice
+                      </div>
+                     <div class="card-body">
+                        <a class="btn btn-block btn-secondary mb-3"
+                        style="width: 11rem; background-color:#afafaf;"
+                        href="/order/download?orderId=<%= order._id %>"
+                        class="btn btn-sm btn-success" style="background-color: green;">Download Reciept</a>
+                   </div>
+                   </div>
+                   <%}%>
         <div class="card mx-3">
           <div class="card-header">
               Order details<br><small>Your order items</small>

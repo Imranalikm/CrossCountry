@@ -86,6 +86,7 @@ router.get('/order/details',userAuth.isLogin,orderController.loadOrderDetails);
 router.post('/order/cancel',orderController.cancelOrder);
 router.get('/order/success',userAuth.isLogin,orderController.loadOrderSuccessPage);
 router.get('/order/payFail',userAuth.isLogin,orderController.showFailPage); 
+router.get('/order/download', userAuth.isLogin, orderController.downloadInvoive);
 
 
 router.post('/order/return',orderController.orderReturn);

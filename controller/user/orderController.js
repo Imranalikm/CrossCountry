@@ -233,7 +233,33 @@ const showFailPage = async (req, res) => {
     }
 };
 
-
+const downloadInvoive = async (req,res) => {
+    try {
+        const orderId = req.query.orderId
+        const order = await orderModel.findOne({ _id: orderId }).populate([
+            {
+                path: 'user',
+                model: 'users'
+            },
+            {
+                path: 'address',
+                model: 'address'
+            },
+            {
+                path: 'items',
+                model: 'orderItem',
+                populate: {
+                    path: 'product',
+                    model: 'product'
+                }
+            }
+        ]);
+        res.render('user/invoiceDownload',{order})
+    } catch (error) {
+        console.error("Error generating PDF:", error);
+        res.render("user/error404");
+    }
+}
 
 
 
@@ -245,5 +271,6 @@ module.exports = {
     cancelOrder,
     loadOrderSuccessPage,
     orderReturn,
-    showFailPage
+    showFailPage,
+    downloadInvoive
 }
