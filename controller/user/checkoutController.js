@@ -77,6 +77,50 @@ const checkoutAddAddress = async (req, res)=>{
     }
     
 }
+const loadEditCheckoutAddress = async (req, res)=>{
+    const { type,id} = req.query;
+    const id2 = req.session.user_id;
+    const userData = await userModel.findOne({_id: id2});
+    const address = await addressModel.findOne({_id:id});
+    const cart = await cartModel.findOne({ userId: id2 });
+    res.render("user/editCheckoutAddress",{type, address,id, user:userData,cart});
+}
+
+const editCheckoutAddress = async (req, res)=>{
+
+    try {
+
+        const addressId = req.query.addressId;
+
+        const { 
+            buildingName,
+            street, 
+            city,
+            state,
+            country,
+        } = req.body;
+
+        let pincode = parseInt(req.body.pincode);
+        let phonenumber = parseInt(req.body.number);
+
+        await addressModel.findByIdAndUpdate(addressId, {
+            buildingName,
+            street,
+            city,
+            state,
+            pincode,
+            country,
+            phonenumber,
+        })
+
+        res.redirect('/checkout/address');
+        
+    } catch (error) {
+        res.status(404).render('user/error404');
+        console.log(error);
+    }
+    
+}
 
 const selectAddress = async (req, res)=>{
 
@@ -306,4 +350,6 @@ module.exports = {
     selectAddress,
     checkout,
     razorPayPaymet,
+    loadEditCheckoutAddress,
+    editCheckoutAddress
 }

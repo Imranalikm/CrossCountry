@@ -75,6 +75,8 @@ router.post('/wishlist/toggle',userAuth.isLogin ,wishlistController.toggleWishli
 
 router.get('/checkout/address',userAuth.isLogin,checkoutController.loadCheckoutAddress)
 router.post('/checkout/addAddress',checkoutController.checkoutAddAddress);
+router.get('/checkout/editAddress',userAuth.isLogin,checkoutController.loadEditCheckoutAddress);
+router.post('/checkout/editAddress',checkoutController.editCheckoutAddress);
 router.get('/checkout',userAuth.isLogin,checkoutController.selectAddress);
 router.post('/razorpay',checkoutController.razorPayPaymet);
 router.post('/checkout',checkoutController.checkout);

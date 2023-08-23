@@ -324,11 +324,11 @@ align-items: center;
                         }) %></td>
                     <td>
                         <span class="font-weight-bold
-                            <% if(orders[i].order_status=='pending') { %> text-warning
+                            <% if(orders[i].order_status=='pending') { %> text-warning 
                             <% } else if(orders[i].order_status=='rejected' || orders[i].order_status=='cancelled') { %> text-danger
                                 <% } else if(orders[i].order_status=='shipped') { %> text
                                     <% } else if(orders[i].order_status=='delivered') { %> text-success
-                            <% } else { %> text-primary <% } %>">
+                            <% } else { %> text-primary <% } %>" style="background-color: #ffffff; border-radius: 2rem;padding-left: 1rem;padding-right: 1rem;">
                             <%= orders[i].order_status %>
                         </span>
                     </td>
