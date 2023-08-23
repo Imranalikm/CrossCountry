@@ -74,11 +74,18 @@
                         <div class="category-filter">
                             <h4>Categories</h4>
                             <ul>
-                                
+                              <li >
+                                <label>
+                                    <input type="radio" class="category-checkbox" name="category" value=""  >
+                                    All
+                                </label>
+                            </li>
                                 <% categories.forEach((category) => { %>
+                                  
+                                  
                                     <li >
                                         <label>
-                                            <input type="checkbox" class="category-checkbox" name="category" value="<%= category._id %>"  >
+                                            <input type="radio" class="category-checkbox" name="category" value="<%= category._id %>"  >
                                             <%= category.categoryName %>
                                         </label>
                                     </li>

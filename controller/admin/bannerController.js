@@ -29,7 +29,7 @@ const addBanner = async (req, res)=>{
 
         const { Image } = req.files;
 
-        const bannerImage = await cloudinaryUpload.imageUpload(Image);
+        const bannerImage = await cloudinaryUpload.imageUpload2(Image);
 
         const newBanner = new bannerModel({
             caption1: {

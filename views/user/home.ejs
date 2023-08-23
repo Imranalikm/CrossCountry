@@ -298,17 +298,54 @@
                         </div>
                     </div> 
                     <%}else {%>
-                      
+                        <div id="demo" class="carousel slide" data-ride="carousel">
+
+                            <!-- Indicators -->
+                            <!-- <ul class="carousel-indicators">
+                              <li data-target="#demo" data-slide-to="0" class="active"></li>
+                              <li data-target="#demo" data-slide-to="1"></li>
+                              <li data-target="#demo" data-slide-to="2"></li>
+                            </ul> -->
+                            
+                            <!-- The slideshow -->
+                            
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="hero__item set-bg" data-setbg="<%= banners[0].bannerImage.url %>">
+                                        <div class="hero__text">
+                                            
+                                            
+                                            <h2 style="color: <%= banners[0].caption2.color %>" ><%= banners[0].caption1.text %> <br /><%= banners[0].caption2.text %></h2>
+                                            <!-- <p>Free Pickup and Delivery Available</p> -->
+                                            <a href="/shop?category=<%= banners[0].category._id %>" class="primary-btn">SHOP NOW</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% for(i=1;i<banners.length;i++){  %>
+                                <div class="carousel-item">
+                                    <div class="hero__item set-bg" data-setbg="<%= banners[i].bannerImage.url %>">
+                                        <div class="hero__text">
+                                            
+                                            <!-- <span style="color: <%= banners[i].caption1.color %>"><%= banners[i].category %></span> -->
+                                            <h2 style="color: <%= banners[i].caption2.color %>"><%= banners[i].caption1.text %> <br /><%= banners[i].caption2.text %></h2>
+
+                                            
+                                            <a href="/shop?category=<%= banners[i].category._id %>" class="primary-btn">SHOP NOW</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                            
+                            <!-- Left and right controls -->
+                            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                              <span class="carousel-control-prev-icon"></span>
+                            </a>
+                            <a class="carousel-control-next" href="#demo" data-slide="next">
+                              <span class="carousel-control-next-icon"></span>
+                            </a>
+                          </div>
     
-     <div class="hero__item set-bg banner-item" data-index="0">
-        <div class="hero__text">
-            <span class="banner-category" style="color: #f5f905;"></span>
-            <h2 class="banner-text" data-color=""></h2>
-            <p style="color: white;"></p>
-            <a href="" class="primary-btn">SHOP NOW</a>
-        </div>
-    </div>
-</div> 
+     
 <% } %>
    
                 </div>
@@ -389,7 +426,8 @@
         </div>
     </div>
    
-
+    
+    
 
     <script>
         function login(){
@@ -415,45 +453,6 @@
          
         
      </script>
-     <script>
-        // Add this JavaScript to your page or an external script
-
-const banners = [
-    <% banners.forEach((banner, index) => { %>
-    {
-        category: "<%= banner.category %>",
-        caption1Text: "<%= banner.caption1.text %>",
-        caption2Text: "<%= banner.caption2.text %>",
-        caption1Color: "<%= banner.caption1.color %>",
-        imageUrl: "<%= banner.bannerImage.url %>"
-    },
-    <% }) %>
-];
-
-const bannerContainer = document.querySelector('.banner-item');
-const bannerCategory = document.querySelector('.banner-category');
-const bannerText = document.querySelector('.banner-text');
-let currentIndex = 0;
-
-function showBanner(index) {
-    const banner = banners[index];
-    // bannerCategory.textContent =;
-    bannerText.textContent = banner.caption1Text + '\n' + banner.caption2Text;
-    bannerText.style.color = banner.caption1Color;
-    bannerContainer.style.backgroundImage = `url(${banner.imageUrl})`;
-}
-
-function nextBanner() {
-    currentIndex = (currentIndex + 1) % banners.length;
-    showBanner(currentIndex);
-}
-
-// Show the first banner initially
-showBanner(currentIndex);
-
-// Automatically switch to the next banner after 3 seconds
-setInterval(nextBanner, 3000);
-
-     </script>
+  
 
     <%- include('./partials/footer.ejs') %>

@@ -9,9 +9,7 @@ const loadCategory = async (req, res)=>{
         let productsValue = [];
         const categories = await categoryModel.find();
 
-        // categories.forEach( async (cat)=>{
-        //     productsValue.push(await productModel.findOne({category: cat._id}));
-        // })
+        
 
         for(let i=0;i<categories.length;i++){
             productsValue[i] = await productModel.findOne({category: categories[i].categoryName})
@@ -34,7 +32,7 @@ const addCategory = async (req, res)=>{
     try{
         const categoryName = req.body.categoryName;
         const image = req.files.image;
-        console.log(image)
+        
         const urlList = await multipleImage(image);
         const catergoryData = await categoryModel.findOne({categoryName: {$regex: new RegExp(`^${categoryName}$`,"i")}})
 

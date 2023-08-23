@@ -18,7 +18,9 @@ const loadHome = async (req, res)=>{
         
        
         const categories = await categoryModel.find();
-        res.render('user/home',{categories, products, user, id,cart,banners,});
+
+        
+        res.render('user/home',{categories, products, user, id,cart,banners, });
 
 
     }catch(err){

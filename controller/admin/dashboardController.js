@@ -113,7 +113,7 @@ const loadDashboard = async(req, res)=>{
                             .limit(5);
 
 
-         console.log(orders);
+         
         const orderCount = await orderModel.countDocuments();
         const userCount = await userModel.countDocuments();
 
@@ -210,7 +210,7 @@ const monthlySaleReport = async (req, res)=>{
             return oneSale;
         })
         
-        console.log(monthlySales);
+        
         res.json({ monthlySales, error: false })
 
     } catch (error) {

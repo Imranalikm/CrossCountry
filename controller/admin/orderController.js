@@ -34,7 +34,7 @@ const loadOrderDetails = async (req, res)=>{
         products.push(product)
     }
     
-    console.log(order);
+    
 
     res.render('admin/orderDetails',{user, order, coupon, address: cartAddress.address, products});
 }
