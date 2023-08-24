@@ -25,6 +25,11 @@
     <link rel="stylesheet" href="/home/css/easyzoom.css"  type="text/css">
    
     <style>
+        @media (max-width: 768px) {
+    .header.sticky-nav {
+        position: static;
+    }
+}
         #snackbar, #snackbar-error{
           visibility: hidden;
           min-width: 250px;
@@ -121,7 +126,7 @@
 <div class="humberger__menu__overlay"></div>
 <div class="humberger__menu__wrapper">
     <div class="humberger__menu__logo">
-        <a href="#"><img class="ml-5" src="/home/img/logo.png" alt="" style="margin-left: 2rem;" ></a>
+        <a href="#"><img class="ml-5" src="/home/img/logo.png" alt="" style="height: .5rem;width: .5rem;" ></a>
     </div>
     <div class="humberger__menu__cart">
         <ul>
@@ -142,18 +147,21 @@
             <% if (user && user.username) { %>
                 <li class="">
                     <div>
-                    <a href="#" style="text-decoration: none">
+                    <a href="#" style="text-decoration: none;font-weight: bold;">
                          <%= user.username %>
                          <i class="fa fa-user"> </i> 
                      </a>
                 </div>
                     <ul class="header__menu__dropdown">
-                        <li><a href="/profile" style="text-decoration: none"><i class="fa fa-user" style="font-size: larger;"></i><%= user.username %>'s Profile</a>
+                        <li><a href="/profile" style="text-decoration: none;font-weight: bold;"><i class="fa fa-user" style="font-size: larger;"></i><%= user.username %>'s Profile</a>
                         </li>
-                        <li><a href="" style="text-decoration: none">Orders</a>
-                        <!-- </li>
-                        <li><a href="/logout" style="text-decoration: none">Logout</a>
-                        </li> -->
+                        
+                            <li><a href="/order" style="text-decoration: none;font-weight: bold;color: #000000;"><i class="fa-solid fa-list-radio" style="font-weight: bold;color: #000000;"></i>Orders</a>
+                            </li>
+                            <li><a href="/wallet" style="text-decoration: none;font-weight: bold;color: #000000;"><i class="fa-solid fa-wallet" style="font-weight: bold;color: #000000;"></i>Wallet</a>
+                            </li>
+                            <li><a href="/logout" style="text-decoration: none;font-weight: bold;color: #000000;"><i class="fa fa-sign-out"></i>Logout</a>
+                            </li>
                     </ul>
                 </li>
                 <% } %>
@@ -170,9 +178,9 @@
     <div class="container-fluid" style="background-color: #fdfdfd;" >
         <div class="row">
             <div class="col-lg-3 d-flex align-items-center">
-                <div class="header__logo  d-flex align-items-center" style="margin-left: 2rem;">
+                <div class="header__logo  d-flex align-items-center mr-5" >
                     
-                    <a class="navbar-brand text-dark fs-4 fw-bold" href="#"><img src="/home/img/logogo.png" alt=""></a>
+                    <a class="navbar-brand text-dark fs-4 fw-bold" href="/"><img src="/home/img/logogo.png" alt="" sty></a>
                     <!-- <div class="" style="font-weight: bold;font-size: large;font-family: sans-serif;">
                         CROSS<span style="color: red;">COUNTRY</span>
                     </div> -->
@@ -190,7 +198,7 @@
                         <% if (user && user.username) { %>
                         <li class="">
                             <div>
-                            <a href="#" style="text-decoration: none">
+                            <a href="#" style="text-decoration: none;font-weight: bold;">
                                  <%= user.username %>
                                  <i class="fa fa-user"> </i> 
                              </a>
@@ -314,7 +322,7 @@
                                     <div class="hero__item set-bg" data-setbg="<%= banners[0].bannerImage.url %>">
                                         <div class="hero__text">
                                             
-                                            
+                                            <span style="color: yellow">CR0SSCOUNTRY</span>   
                                             <h2 style="color: <%= banners[0].caption2.color %>" ><%= banners[0].caption1.text %> <br /><%= banners[0].caption2.text %></h2>
                                             <!-- <p>Free Pickup and Delivery Available</p> -->
                                             <a href="/shop?category=<%= banners[0].category._id %>" class="primary-btn">SHOP NOW</a>
@@ -326,7 +334,7 @@
                                     <div class="hero__item set-bg" data-setbg="<%= banners[i].bannerImage.url %>">
                                         <div class="hero__text">
                                             
-                                            <!-- <span style="color: <%= banners[i].caption1.color %>"><%= banners[i].category %></span> -->
+                                            <span style="color: <%= banners[i].caption1.color %>">CR0SSCOUNTRY</span>
                                             <h2 style="color: <%= banners[i].caption2.color %>"><%= banners[i].caption1.text %> <br /><%= banners[i].caption2.text %></h2>
 
                                             

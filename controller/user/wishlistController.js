@@ -19,7 +19,7 @@ const addToWishlist = async (req, res) => {
     const id = req.session.user_id;
     const {productId} = req.query;
     
-    console.log(productId);
+    
 ;
     try {
         await userModel.updateOne({ _id: id }, { $push: { wishlist: productId } });

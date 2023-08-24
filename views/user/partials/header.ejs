@@ -25,6 +25,11 @@
    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+         @media (max-width: 768px) {
+    .header.sticky-nav {
+        position: static;
+    }
+}
         #snackbar, #snackbar-error{
           visibility: hidden;
           min-width: 250px;
@@ -116,10 +121,30 @@
     
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href="/">Home</a></li>
             <li><a href="#">Shop</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Contact</a></li>
+            <% if (user && user.username) { %>
+                <li class="">
+                    <div>
+                    <a href="#" style="text-decoration: none">
+                         <%= user.username %>
+                         <i class="fa fa-user"> </i> 
+                     </a>
+                </div>
+                    <ul class="humberger__menu__dropdown">
+                        <li><a href="/profile" style="text-decoration: none;font-weight: bold;color: #000000;"><i class="fa fa-user" style="font-weight: bold ;color: #000000 ;"></i><%= user.username %>'s Profile</a>
+                        </li>
+                        <li><a href="/order" style="text-decoration: none;font-weight: bold;color: #000000;"><i class="fa-solid fa-list-radio" style="font-weight: bold;color: #000000;"></i>Orders</a>
+                        </li>
+                        <li><a href="/wallet" style="text-decoration: none;font-weight: bold;color: #000000;"><i class="fa-solid fa-wallet" style="font-weight: bold;color: #000000;"></i>Wallet</a>
+                        </li>
+                        <li><a href="/logout" style="text-decoration: none;font-weight: bold;color: #000000;"><i class="fa fa-sign-out"></i>Logout</a>
+                        </li>
+                    </ul>
+                </li>
+                <% } %>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>

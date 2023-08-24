@@ -28,6 +28,47 @@
    
    
     <style>
+        /* CSS for the table customization */
+.table-custom {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14px;
+}
+
+.table-custom th,
+.table-custom td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #dddddd;
+}
+
+.table-custom th {
+    background-color: #f2f2f2;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .table-custom thead {
+        display: none; /* Hide the table header on small screens */
+    }
+    
+    .table-custom tbody tr {
+        display: block;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        background-color: #f5f5f5;
+    }
+    
+    .table-custom tbody td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: bold;
+    }
+}
+
         #snackbar, #snackbar-error{
           visibility: hidden;
           min-width: 250px;
@@ -131,7 +172,7 @@
 <div class="humberger__menu__overlay"></div>
 <div class="humberger__menu__wrapper">
     <div class="humberger__menu__logo">
-        <a href="#"><img class="ml-5" src="/home/img/logo.png" alt="" style="margin-left: 2rem;" ></a>
+        <a href="#"><img class="ml-5" src="/home/img/logo.png" alt=""  ></a>
     </div>
     <div class="humberger__menu__cart">
         <ul>
@@ -163,7 +204,7 @@
     <div class="container-fluid" style="background-color: #fdfdfd;" >
         <div class="row">
             <div class="col-lg-3 d-flex align-items-center">
-                <div class="header__logo  d-flex align-items-center" style="margin-left: 2rem;">
+                <div class="header__logo  d-flex align-items-center" >
                     
                     <a class="navbar-brand text-dark fs-4 fw-bold" href="#"><img src="/home/img/logogo.png" alt=""></a>
                     <!-- <div class="" style="font-weight: bold;font-size: large;font-family: sans-serif;">
@@ -328,7 +369,7 @@ align-items: center;
                             <% } else if(orders[i].order_status=='rejected' || orders[i].order_status=='cancelled') { %> text-danger
                                 <% } else if(orders[i].order_status=='shipped') { %> text
                                     <% } else if(orders[i].order_status=='delivered') { %> text-success
-                            <% } else { %> text-primary <% } %>" style="background-color: #ffffff; border-radius: 2rem;padding-left: 1rem;padding-right: 1rem;">
+                            <% } else { %> text-primary <% } %>">
                             <%= orders[i].order_status %>
                         </span>
                     </td>
