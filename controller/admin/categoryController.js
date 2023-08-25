@@ -16,7 +16,7 @@ const loadCategory = async (req, res)=>{
                      
         }
     
-        res.render('admin/category',{categories, productsValue});
+        res.render('admin/Category',{categories, productsValue});
 
     }catch(err){
         console.log(err);
