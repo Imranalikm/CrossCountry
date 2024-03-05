@@ -49,20 +49,25 @@
                         <% } %>
                     <div class="form-group form-button">
                         <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                        
+                    </div>
+                </form>
+                <form action="/login" method="POST" class="register-form1" id="test-login-form">
+                    <div class="form-group form-button">
+                        <input type="submit" name="test-signin" id="test-signin" class="form-submit" value="Test Login"/>
                     </div>
                 </form>
 
                 <div style="margin-top: 15px;">
                     <a  style="color: #ff0000;font-size: 16px;text-decoration: none; " href="/forgotPassword">Forgot Password?</a>
                 </div>
-                <!-- <div class="social-login">
-                    <span class="social-label">Or login with</span>
-                    <ul class="socials">
-                        <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
-                        <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
-                        <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
-                    </ul>
-                </div> -->
+
+                <div>
+                    DEMO:
+                    Email:imranalikm@gmail.com
+                    Password:123
+                </div>
+                
             </div>
         </div>
     </div>
@@ -73,15 +78,48 @@
 
 <script>
     const togglePassword = document.getElementById('togglePassword');
-const passwordInput = document.getElementById('your_pass');
+    const passwordInput = document.getElementById('your_pass');
 
-togglePassword.addEventListener('click', function () {
-    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-    passwordInput.setAttribute('type', type);
-    togglePassword.classList.toggle('zmdi-eye');
-    togglePassword.classList.toggle('zmdi-eye-off');
-});
+    togglePassword.addEventListener('click', function () {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        togglePassword.classList.toggle('zmdi-eye');
+        togglePassword.classList.toggle('zmdi-eye-off');
+    });
 
+    const testLoginForm = document.getElementById('test-login-form');
+    const errorField = document.getElementById('error-field');
+
+    testLoginForm.addEventListener('submit', async function (event) {
+
+        event.preventDefault(); // Prevent the default form submission
+
+        const email = 'imranalikm@gmail.com'; // Test email
+        const password = '123'; // Test password
+
+        try {
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // Successful test login, you may redirect or update UI here
+                console.log(data.message);
+                
+            } else {
+                // Failed test login, display error message
+                errorField.innerHTML = data.message || 'Test login failed';
+            }
+        } catch (error) {
+            console.error('Error during test login:', error);
+        }
+    });
 </script>
 <%- include('./partials/footer.ejs') %>
 
